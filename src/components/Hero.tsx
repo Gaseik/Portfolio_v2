@@ -6,8 +6,8 @@ const STACK = ['React', 'Next.js', 'TypeScript', 'React Native', 'iOS / Android'
 
 const DATA_ROWS = [
   { key: 'currently',    val: 'M10c · London',       cls: 'accent', href: 'https://www.m10c.com/' },
-  { key: 'education',    val: 'MSc CS · QMUL',        cls: '' },
-  { key: 'side project', val: 'Osho Zen Insight ↗',   cls: 'green' },
+  { key: 'education',    val: 'MSc CS · QMUL',        cls: 'accent', href: 'https://www.qmul.ac.uk/' },
+  { key: 'side project', val: 'Osho Zen Insight ↗',   cls: 'green', href: 'https://osho-tarot.vercel.app/' },
   { key: 'available',    val: 'immediately',           cls: 'green' },
 ]
 
