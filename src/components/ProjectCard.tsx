@@ -11,9 +11,11 @@ interface Props {
   tags: string[]
   image: string
   delay?: string
+  url?: string
+  urlLabel?: string
 }
 
-export default function ProjectCard({ num, cat, title, impact, tags, image, delay = '0s' }: Props) {
+export default function ProjectCard({ num, cat, title, impact, tags, image, delay = '0s', url, urlLabel }: Props) {
   const [hovered, setHovered] = useState(false)
   const [imgError, setImgError] = useState(false)
 
@@ -86,7 +88,10 @@ export default function ProjectCard({ num, cat, title, impact, tags, image, dela
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 12 }}>
         {tags.map(t => <span className="cc" key={t}>{t}</span>)}
       </div>
-      <div className="offline">Company project · offline</div>
+      {url
+        ? <a href={url} target="_blank" rel="noopener" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.62rem', color: 'var(--accent)', textDecoration: 'none', borderBottom: '1px solid rgba(0,102,255,.3)', cursor: 'none' }}>{urlLabel ?? url}</a>
+        : <div className="offline">Company project · offline</div>
+      }
     </div>
   )
 }

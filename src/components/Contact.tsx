@@ -1,8 +1,8 @@
 export default function Contact() {
   const links = [
     { label: 'james800822@hotmail.com', href: 'mailto:james800822@hotmail.com', primary: true },
-    { label: 'GitHub ↗',    href: 'https://github.com/james-cheng', primary: false },
-    { label: 'LinkedIn ↗',  href: 'https://linkedin.com',            primary: false },
+    { label: 'GitHub ↗',    href: 'https://github.com/Gaseik', primary: false },
+    { label: 'LinkedIn ↗',  href: 'https://www.linkedin.com/in/weichieh-cheng-fe',            primary: false },
     { label: 'Resume PDF ↗', href: '/resume.pdf',                    primary: false },
   ]
 

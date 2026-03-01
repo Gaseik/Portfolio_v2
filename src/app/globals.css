@@ -199,3 +199,40 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
 @media (max-width: 640px) {
   .decisions { grid-template-columns: 1fr; }
 }
+
+/* ── responsive ── */
+@media (max-width: 1080px) {
+  header { padding: 0 24px !important; }
+}
+
+@media (max-width: 640px) {
+  .cur, .cur-r { display: none; }
+  body { cursor: auto; }
+  a, button { cursor: pointer; }
+
+  .status-bar { font-size: .62rem; padding: 4px 10px; margin-bottom: 28px; }
+  .dt-row { grid-template-columns: 100px 1fr; padding: 11px 0; }
+  .dt-key { font-size: .6rem; }
+  .dt-val { font-size: .7rem; }
+  .stag { font-size: .62rem; padding: 4px 8px; }
+
+  .sec-ttl { font-size: .68rem; }
+  .sec-note { font-size: .6rem; }
+
+  .decisions { grid-template-columns: 1fr; }
+  .dec { padding: 12px 14px; }
+  .dec-v { font-size: .78rem; }
+
+  .osho-metrics { grid-template-columns: 1fr 1fr; }
+  .metric { padding: 14px 12px; }
+
+  .proj-grid { grid-template-columns: 1fr; }
+  .proj-card { padding: 20px; }
+
+  .exp-list { grid-template-columns: 1fr; }
+  .exp-details li { font-size: .64rem; }
+
+  .edu-strip { grid-template-columns: 1fr; }
+
+  .btn { width: 100%; justify-content: center; padding: 11px 16px; }
+}

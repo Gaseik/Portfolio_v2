@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react'
 const STACK = ['React', 'Next.js', 'TypeScript', 'React Native', 'iOS / Android', 'Node.js', 'Three.js', 'Tailwind', 'AWS', 'Docker', 'Figma']
 
 const DATA_ROWS = [
-  { key: 'currently',    val: 'M10c · London',       cls: 'accent' },
-  { key: 'companies',    val: '5',                    cls: '' },
+  { key: 'currently',    val: 'M10c · London',       cls: 'accent', href: 'https://www.m10c.com/' },
   { key: 'education',    val: 'MSc CS · QMUL',        cls: '' },
   { key: 'side project', val: 'Osho Zen Insight ↗',   cls: 'green' },
   { key: 'available',    val: 'immediately',           cls: 'green' },
@@ -69,13 +68,13 @@ export default function Hero() {
           <strong style={{ color: 'var(--ink2)', fontWeight: 600 }}>iOS &amp; Android</strong>{' '}
           (React Native) to{' '}
           <strong style={{ color: 'var(--ink2)', fontWeight: 600 }}>AI SaaS</strong>.
-          Currently at M10c, London.
+          Currently at <a href='https://www.m10c.com/' target='_blank' style={{color:'var(--accent)',textDecoration:'none',borderBottom:'1px solid var(--accent)',cursor:'none'}}>M10c</a>, London.
         </p>
 
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', animation: 'fu .5s .4s both' }}>
           <a href="mailto:james800822@hotmail.com" className="btn p">Email Me</a>
-          <a href="https://github.com/james-cheng" target="_blank" rel="noopener" className="btn">GitHub ↗</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener" className="btn">LinkedIn ↗</a>
+          <a href="https://github.com/Gaseik" target="_blank" rel="noopener" className="btn">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/weichieh-cheng-fe" target="_blank" rel="noopener" className="btn">LinkedIn ↗</a>
           <a href="/resume.pdf" target="_blank" className="btn">Resume ↗</a>
         </div>
       </div>
@@ -92,10 +91,13 @@ export default function Hero() {
             <span className="dt-key">experience</span>
             <span className="dt-val">{yoe}+ years</span>
           </div>
-          {DATA_ROWS.map(({ key, val, cls }) => (
+          {DATA_ROWS.map(({ key, val, cls, href }) => (
             <div className="dt-row" key={key}>
               <span className="dt-key">{key}</span>
-              <span className={`dt-val ${cls}`}>{val}</span>
+              {href
+                ? <a href={href} target="_blank" rel="noopener" className={`dt-val ${cls}`} style={{ textDecoration: 'none', borderBottom: '1px solid var(--accent)', cursor: 'none', display: 'inline' }}>{val}</a>
+                : <span className={`dt-val ${cls}`}>{val}</span>
+              }
             </div>
           ))}
         </div>

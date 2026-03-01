@@ -69,7 +69,7 @@ function ExpItem({ exp, items, delay }: { exp: typeof experience[0], items: stri
             {exp.role}
           </div>
           <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.62rem', color: 'var(--accent)' }}>
-            {exp.company} · {exp.location}
+            <>{exp.company === 'M10c' ? <a href='https://www.m10c.com/' target='_blank' rel='noopener' style={{color:'var(--accent)',textDecoration:'none',borderBottom:'1px solid rgba(0,102,255,.3)',cursor:'none'}}>M10c</a> : exp.company} · {exp.location}</>
           </div>
         </div>
         <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.65rem', color: 'var(--ink2)', whiteSpace: 'nowrap' }}>
