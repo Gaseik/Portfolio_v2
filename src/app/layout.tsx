@@ -22,13 +22,13 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://james-cheng.vercel.app'),
+  metadataBase: new URL('https://portfolio-james-cheng.vercel.app'),
   title: 'James Cheng — Frontend Engineer',
   description: 'Frontend Engineer with 6+ years experience. React, Next.js, TypeScript. Based in London, UK.',
   openGraph: {
     title: 'James Cheng — Frontend Engineer',
     description: 'Frontend Engineer with 6+ years experience. React, Next.js, TypeScript. Based in London, UK.',
-    url: 'https://james-cheng.vercel.app',
+    url: 'https://portfolio-james-cheng.vercel.app',
     siteName: 'James Cheng',
     locale: 'en_GB',
     type: 'website',
