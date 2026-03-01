@@ -46,4 +46,14 @@ export const projects = [
     tags: ['Three.js', 'TypeScript', 'AR'],
     image: '/img/CitizenMockup.png',
   },
+  {
+    num: '04',
+    cat: 'Freelance · Mlytics',
+    title: 'Official Website Reconstruction',
+    impact: 'Migrated corporate site from WordPress to Gatsby.js + React — SEO optimisation, i18n, RWD, and marketing-aligned animations.',
+    tags: ['Gatsby.js', 'React', 'i18n', 'SEO', 'RWD'],
+    image: '/img/MlyticsMockup.png',
+    url: 'https://www.mlytics.com',
+    urlLabel: 'mlytics.com ↗',
+  },
 ]
