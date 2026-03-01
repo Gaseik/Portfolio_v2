@@ -39,13 +39,13 @@ export default function Experience() {
   }, [])
 
   return (
-    <section id="experience" style={{ padding: '72px 48px', borderTop: '1px solid var(--line)' }}>
+    <section id="experience" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 40 }}>
         <span className="sec-ttl">experience</span>
         <span className="sec-note">{yoe}+ years</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: 'var(--line)', border: '1px solid var(--line)' }}>
+      <div className="exp-list" style={{ gap: 1, background: 'var(--line)', border: '1px solid var(--line)' }}>
         {experience.map((exp, i) => (
           <ExpItem key={exp.company} exp={exp} items={details[exp.company] ?? []} delay={i % 2 === 1 ? '.08s' : '0s'} />
         ))}

@@ -66,10 +66,11 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
 .status-bar {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--bg2); border: 1px solid var(--line);
-  padding: 5px 12px; margin-bottom: 40px;
+  padding: 5px 12px;
   font-family: 'IBM Plex Mono', monospace;
   font-size: .68rem; color: var(--dim);
   animation: fu .5s .05s both;
+  position: absolute; top: 48px; left: 48px; right: 48px;
 }
 .status-dot {
   width: 6px; height: 6px; border-radius: 50%;
@@ -174,6 +175,24 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
 .offline { font-family: 'IBM Plex Mono', monospace; font-size: .62rem; color: var(--dim); display: flex; align-items: center; gap: 6px; }
 .offline::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--dim); flex-shrink: 0; }
 
+/* section padding */
+#experience, #education, #projects { padding: 72px 48px; }
+#contact { padding: 96px 48px; }
+
+/* hero grid */
+.hero-grid { display: grid; grid-template-columns: 1fr 400px; }
+.hero-left { padding: 72px 64px 72px 48px; }
+.hero-right { padding: 72px 48px; }
+
+/* osho wrap */
+.proj-osho-grid { display: grid; grid-template-columns: 1fr 360px; }
+
+/* layout grids */
+.exp-list { display: grid; grid-template-columns: 1fr 1fr; }
+.edu-strip { display: grid; grid-template-columns: 1fr 1fr; }
+.proj-grid { display: grid; grid-template-columns: repeat(2,1fr); }
+.osho-metrics { display: grid; grid-template-columns: repeat(4,1fr); }
+
 /* experience expand */
 .exp-details {
   max-height: 0; overflow: hidden;
@@ -203,6 +222,12 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
 /* ── responsive ── */
 @media (max-width: 1080px) {
   header { padding: 0 24px !important; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-left { padding: 72px 32px; }
+  .status-bar { left: 32px; right: 32px; }
+  .hero-right { border-top: 1px solid var(--line); padding: 40px 32px; }
+  .proj-osho-grid { grid-template-columns: 1fr; }
+  #experience, #education, #projects, #contact { padding: 56px 24px; }
 }
 
 @media (max-width: 640px) {
@@ -210,7 +235,10 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
   body { cursor: auto; }
   a, button { cursor: pointer; }
 
-  .status-bar { font-size: .62rem; padding: 4px 10px; margin-bottom: 28px; }
+  .hero-left { padding: 56px 24px; }
+  .hero-right { padding: 32px 24px; }
+
+  .status-bar { position: static; left: auto; right: auto; font-size: .62rem; padding: 4px 10px; margin-bottom: 28px; }
   .dt-row { grid-template-columns: 100px 1fr; padding: 11px 0; }
   .dt-key { font-size: .6rem; }
   .dt-val { font-size: .7rem; }
@@ -224,15 +252,19 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
   .dec-v { font-size: .78rem; }
 
   .osho-metrics { grid-template-columns: 1fr 1fr; }
-  .metric { padding: 14px 12px; }
 
   .proj-grid { grid-template-columns: 1fr; }
-  .proj-card { padding: 20px; }
+  .proj-card { padding: 20px 16px !important; }
+  .osho-body { padding: 24px 16px !important; }
 
   .exp-list { grid-template-columns: 1fr; }
+  .exp-item { padding: 20px 16px !important; }
   .exp-details li { font-size: .64rem; }
 
   .edu-strip { grid-template-columns: 1fr; }
+  .edu-strip > div { padding: 20px 16px !important; }
 
   .btn { width: 100%; justify-content: center; padding: 11px 16px; }
+
+  #experience, #education, #projects, #contact { padding: 40px 24px; }
 }

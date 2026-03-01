@@ -5,12 +5,12 @@ import { education } from '@/data/experience'
 
 export default function Education() {
   return (
-    <section id="education" style={{ padding: '72px 48px', background: 'var(--bg2)', borderTop: '1px solid var(--line)' }}>
+    <section id="education" style={{ background: 'var(--bg2)', borderTop: '1px solid var(--line)' }}>
       <div className="reveal" style={{ marginBottom: 40 }}>
         <span className="sec-ttl">education</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: 'var(--line)', border: '1px solid var(--line)' }}>
+      <div className="edu-strip" style={{ gap: 1, background: 'var(--line)', border: '1px solid var(--line)' }}>
         {education.map((edu, i) => (
           <EduItem key={edu.school} edu={edu} delay={i === 1 ? '.08s' : '0s'} />
         ))}

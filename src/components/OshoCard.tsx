@@ -3,12 +3,10 @@ import { osho } from '@/data/projects'
 export default function OshoCard() {
   return (
     <>
-      <div style={{
+      <div className="proj-osho-wrap proj-osho-grid" style={{
         border: '1px solid var(--line)', marginBottom: 1,
-        display: 'grid', gridTemplateColumns: '1fr 360px',
         overflow: 'hidden', position: 'relative',
       }}
-      className="proj-osho-wrap"
       >
         <style>{`
           .proj-osho-wrap::before {
@@ -22,7 +20,7 @@ export default function OshoCard() {
         `}</style>
 
         {/* body */}
-        <div style={{ padding: '40px 44px' }}>
+        <div className="osho-body" style={{ padding: '40px 44px' }}>
           <div className="file-tab">
             <div className="dot" />
             osho-zen-insight<span className="live"> · live</span>
@@ -84,9 +82,9 @@ export default function OshoCard() {
       </div>
 
       {/* metrics */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 1, background: 'var(--line)', border: '1px solid var(--line)', borderTop: 'none', marginBottom: 1 }}>
+      <div className="osho-metrics" style={{ gap: 1, background: 'var(--line)', border: '1px solid var(--line)', borderTop: 'none', marginBottom: 1 }}>
         {osho.metrics.map(({ n, l }) => (
-          <div key={l} style={{ background: 'var(--bg2)', padding: '16px 20px', textAlign: 'center' }}>
+          <div key={l} style={{ background: 'var(--bg2)', padding: '16px 20px', textAlign: 'center' }} className="metric">
             <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '1.2rem', fontWeight: 500, color: 'var(--ink)', lineHeight: 1, marginBottom: 4 }}>{n}</div>
             <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.58rem', letterSpacing: '.06em', color: 'var(--dim)', textTransform: 'uppercase' }}>{l}</div>
           </div>
