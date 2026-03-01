@@ -29,50 +29,53 @@ export default function Hero() {
       <div className="hero-left" style={{
         borderRight: '1px solid var(--line)',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
+        position: 'relative',
       }}>
         <div className="status-bar">
           <div className="status-dot" />
           Available for opportunities · London, UK
         </div>
 
-        <div style={{
-          fontFamily: "'IBM Plex Sans', sans-serif",
-          fontSize: 'clamp(40px, 5.5vw, 72px)',
-          fontWeight: 600, lineHeight: 1.05,
-          letterSpacing: '-.03em', color: 'var(--ink)',
-          marginBottom: 8,
-          animation: 'fu .5s .1s both',
-        }}>
-          James Cheng
-        </div>
+        <div>
+          <div style={{
+            fontFamily: "'IBM Plex Sans', sans-serif",
+            fontSize: 'clamp(40px, 5.5vw, 72px)',
+            fontWeight: 600, lineHeight: 1.05,
+            letterSpacing: '-.03em', color: 'var(--ink)',
+            marginBottom: 8,
+            animation: 'fu .5s .1s both',
+          }}>
+            James Cheng
+          </div>
 
-        <div style={{
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontSize: '.85rem', color: 'var(--accent)',
-          letterSpacing: '.02em', marginBottom: 32,
-          animation: 'fu .5s .2s both',
-        }}>
-          Frontend Engineer · {yoe}+ years · React / Next.js / TypeScript
-        </div>
+          <div style={{
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: '.85rem', color: 'var(--accent)',
+            letterSpacing: '.02em', marginBottom: 32,
+            animation: 'fu .5s .2s both',
+          }}>
+            Frontend Engineer · {yoe}+ years · React / Next.js / TypeScript
+          </div>
 
-        <p style={{
-          fontSize: '.95rem', lineHeight: 1.75,
-          color: 'var(--dim)', maxWidth: 420, marginBottom: 40,
-          animation: 'fu .5s .3s both',
-        }}>
-          Building production-grade web and mobile products — from{' '}
-          <strong style={{ color: 'var(--ink2)', fontWeight: 600 }}>AR experiences</strong>{' '}
-          (Three.js) to{' '}
-          <strong style={{ color: 'var(--ink2)', fontWeight: 600 }}>iOS &amp; Android</strong>{' '}
-          (React Native) to{' '}
-          <strong style={{ color: 'var(--ink2)', fontWeight: 600 }}>AI SaaS</strong>.
-          Currently at <a href='https://www.m10c.com/' target='_blank' style={{color:'var(--accent)',textDecoration:'none',borderBottom:'1px solid var(--accent)',cursor:'none'}}>M10c</a>, London.
-        </p>
+          <p style={{
+            fontSize: '.95rem', lineHeight: 1.75,
+            color: 'var(--dim)', maxWidth: 420, marginBottom: 40,
+            animation: 'fu .5s .3s both',
+          }}>
+            Building production-grade web and mobile products — from{' '}
+            <strong style={{ color: 'var(--ink2)', fontWeight: 600 }}>AR experiences</strong>{' '}
+            (Three.js) to{' '}
+            <strong style={{ color: 'var(--ink2)', fontWeight: 600 }}>iOS &amp; Android</strong>{' '}
+            (React Native) to{' '}
+            <strong style={{ color: 'var(--ink2)', fontWeight: 600 }}>AI SaaS</strong>.
+            Currently at <a href='https://www.m10c.com/' target='_blank' style={{color:'var(--accent)',textDecoration:'none',borderBottom:'1px solid var(--accent)',cursor:'none'}}>M10c</a>, London.
+          </p>
 
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', animation: 'fu .5s .4s both' }}>
-          <a href="mailto:james800822@hotmail.com" className="btn p">Email Me</a>
-          <a href="https://github.com/Gaseik" target="_blank" rel="noopener" className="btn">GitHub ↗</a>
-          <a href="https://www.linkedin.com/in/weichieh-cheng-fe" target="_blank" rel="noopener" className="btn">LinkedIn ↗</a>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', animation: 'fu .5s .4s both' }}>
+            <a href="mailto:james800822@hotmail.com" className="btn p">Email Me</a>
+            <a href="https://github.com/Gaseik" target="_blank" rel="noopener" className="btn">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/weichieh-cheng-fe" target="_blank" rel="noopener" className="btn">LinkedIn ↗</a>
+          </div>
         </div>
       </div>
 

@@ -39,7 +39,7 @@ export default function Experience() {
   }, [])
 
   return (
-    <section id="experience" style={{ padding: '72px 48px', borderTop: '1px solid var(--line)' }}>
+    <section id="experience" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 40 }}>
         <span className="sec-ttl">experience</span>
         <span className="sec-note">{yoe}+ years</span>

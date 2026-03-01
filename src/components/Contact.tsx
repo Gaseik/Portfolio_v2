@@ -6,7 +6,7 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" style={{ padding: '96px 48px', borderTop: '1px solid var(--line)' }}>
+    <section id="contact" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="reveal">
         <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.62rem', color: 'var(--accent)', letterSpacing: '.04em', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 10 }}>
           <span>{'// '}</span>open to work

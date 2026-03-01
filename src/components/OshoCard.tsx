@@ -20,7 +20,7 @@ export default function OshoCard() {
         `}</style>
 
         {/* body */}
-        <div style={{ padding: '40px 44px' }}>
+        <div className="osho-body" style={{ padding: '40px 44px' }}>
           <div className="file-tab">
             <div className="dot" />
             osho-zen-insight<span className="live"> · live</span>

@@ -63,7 +63,7 @@ export default function ProjectCard({ num, cat, title, impact, tags, image, dela
             alt={title}
             fill
             style={{
-              objectFit: 'cover',
+              objectFit: 'contain',
               filter: hovered ? 'saturate(.9)' : 'saturate(.6)',
               transform: hovered ? 'scale(1.03)' : 'scale(1)',
               transition: 'filter .3s, transform .4s',

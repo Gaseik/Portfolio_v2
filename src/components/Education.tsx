@@ -5,7 +5,7 @@ import { education } from '@/data/experience'
 
 export default function Education() {
   return (
-    <section id="education" style={{ padding: '72px 48px', background: 'var(--bg2)', borderTop: '1px solid var(--line)' }}>
+    <section id="education" style={{ background: 'var(--bg2)', borderTop: '1px solid var(--line)' }}>
       <div className="reveal" style={{ marginBottom: 40 }}>
         <span className="sec-ttl">education</span>
       </div>

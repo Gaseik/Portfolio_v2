@@ -4,7 +4,7 @@ import { projects } from '@/data/projects'
 
 export default function Projects() {
   return (
-    <section id="projects" style={{ padding: '72px 48px', borderTop: '1px solid var(--line)' }}>
+    <section id="projects" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="reveal" style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         marginBottom: 40,
