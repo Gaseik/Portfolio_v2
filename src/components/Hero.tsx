@@ -73,7 +73,6 @@ export default function Hero() {
           <a href="mailto:james800822@hotmail.com" className="btn p">Email Me</a>
           <a href="https://github.com/Gaseik" target="_blank" rel="noopener" className="btn">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/weichieh-cheng-fe" target="_blank" rel="noopener" className="btn">LinkedIn ↗</a>
-          <a href="/resume.pdf" target="_blank" className="btn">Resume ↗</a>
         </div>
       </div>
 

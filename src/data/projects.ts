@@ -32,11 +32,11 @@ export const projects = [
   },
   {
     num: '02',
-    cat: 'Mobile App · Hannlync Co.',
-    title: 'Personnel Tracker',
-    impact: 'Real-time entry/exit tracking for UMC during COVID — live data across multiple factory gates.',
-    tags: ['React', 'Real-time', 'Mobile'],
-    image: '/img/JanitorMockup.png',
+    cat: 'Enterprise SPA · Mulder Tech',
+    title: 'Consultant Panel',
+    impact: 'Regulatory compliance platform for medical device lifecycle tracking — dashboard, document control, AI regulatory intelligence, and 13+ role-based access across multi-tenant architecture.',
+    tags: ['React', 'TypeScript', 'AWS', 'RBAC'],
+    image: '/img/ConsultantPanelMockup.png',
   },
   {
     num: '03',
@@ -44,7 +44,7 @@ export const projects = [
     title: 'AR Experience Platform',
     impact: "Led frontend for Taiwan's top AR startup. +20% interaction, −30% load time via Three.js + TypeScript overhaul.",
     tags: ['Three.js', 'TypeScript', 'AR'],
-    image: '/img/CitizenMockup.png',
+    image: '/img/Spe3dMockup.png',
   },
   {
     num: '04',
