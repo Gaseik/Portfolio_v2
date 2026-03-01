@@ -1,6 +1,6 @@
 export const osho = {
   title: 'Osho Zen Insight',
-  url: 'https://osho-wk7j.vercel.app',
+  url: 'https://osho-tarot.vercel.app',
   subtitle: 'AI Tarot Platform · Solo Project · 2024–Present',
   meta: 'Next.js 16 / Groq / TypeScript',
   description:
