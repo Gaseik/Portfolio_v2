@@ -24,7 +24,7 @@ export default function ProjectCard({ num, cat, title, impact, tags, image, dela
 
   return (
     <div
-      className="reveal"
+      className="proj-card reveal"
       style={{
         background: hovered ? 'var(--bg2)' : 'var(--bg)',
         padding: '28px',

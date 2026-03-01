@@ -174,6 +174,20 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
 .offline { font-family: 'IBM Plex Mono', monospace; font-size: .62rem; color: var(--dim); display: flex; align-items: center; gap: 6px; }
 .offline::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--dim); flex-shrink: 0; }
 
+/* hero grid */
+.hero-grid { display: grid; grid-template-columns: 1fr 400px; }
+.hero-left { padding: 72px 64px 72px 48px; }
+.hero-right { padding: 72px 48px; }
+
+/* osho wrap */
+.proj-osho-grid { display: grid; grid-template-columns: 1fr 360px; }
+
+/* layout grids */
+.exp-list { display: grid; grid-template-columns: 1fr 1fr; }
+.edu-strip { display: grid; grid-template-columns: 1fr 1fr; }
+.proj-grid { display: grid; grid-template-columns: repeat(2,1fr); }
+.osho-metrics { display: grid; grid-template-columns: repeat(4,1fr); }
+
 /* experience expand */
 .exp-details {
   max-height: 0; overflow: hidden;
@@ -203,12 +217,20 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
 /* ── responsive ── */
 @media (max-width: 1080px) {
   header { padding: 0 24px !important; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-left { padding: 72px 32px; }
+  .hero-right { border-top: 1px solid var(--line); padding: 40px 32px; }
+  .proj-osho-grid { grid-template-columns: 1fr; }
+  #experience, #education, #projects, #contact { padding: 56px 24px; }
 }
 
 @media (max-width: 640px) {
   .cur, .cur-r { display: none; }
   body { cursor: auto; }
   a, button { cursor: pointer; }
+
+  .hero-left { padding: 56px 20px; }
+  .hero-right { padding: 32px 20px; }
 
   .status-bar { font-size: .62rem; padding: 4px 10px; margin-bottom: 28px; }
   .dt-row { grid-template-columns: 100px 1fr; padding: 11px 0; }
@@ -224,7 +246,6 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
   .dec-v { font-size: .78rem; }
 
   .osho-metrics { grid-template-columns: 1fr 1fr; }
-  .metric { padding: 14px 12px; }
 
   .proj-grid { grid-template-columns: 1fr; }
   .proj-card { padding: 20px; }
@@ -235,4 +256,6 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
   .edu-strip { grid-template-columns: 1fr; }
 
   .btn { width: 100%; justify-content: center; padding: 11px 16px; }
+
+  #experience, #education, #projects, #contact { padding: 40px 16px; }
 }

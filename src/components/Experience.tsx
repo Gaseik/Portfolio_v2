@@ -45,7 +45,7 @@ export default function Experience() {
         <span className="sec-note">{yoe}+ years</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: 'var(--line)', border: '1px solid var(--line)' }}>
+      <div className="exp-list" style={{ gap: 1, background: 'var(--line)', border: '1px solid var(--line)' }}>
         {experience.map((exp, i) => (
           <ExpItem key={exp.company} exp={exp} items={details[exp.company] ?? []} delay={i % 2 === 1 ? '.08s' : '0s'} />
         ))}

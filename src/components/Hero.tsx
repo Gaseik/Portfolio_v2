@@ -20,15 +20,13 @@ export default function Hero() {
   }, [])
 
   return (
-    <section style={{
+    <section className="hero-grid" style={{
       minHeight: '100vh',
-      display: 'grid', gridTemplateColumns: '1fr 400px',
       borderBottom: '1px solid var(--line)',
       paddingTop: 56,
     }}>
       {/* LEFT */}
-      <div style={{
-        padding: '72px 64px 72px 48px',
+      <div className="hero-left" style={{
         borderRight: '1px solid var(--line)',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
       }}>
@@ -80,8 +78,7 @@ export default function Hero() {
       </div>
 
       {/* RIGHT */}
-      <div style={{
-        padding: '72px 48px',
+      <div className="hero-right" style={{
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
         background: 'var(--bg2)',
         animation: 'fi .6s .25s both',

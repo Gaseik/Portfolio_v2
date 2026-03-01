@@ -17,8 +17,7 @@ export default function Projects() {
 
       <div className="reveal"><OshoCard /></div>
 
-      <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(2,1fr)',
+      <div className="proj-grid" style={{
         gap: 1, background: 'var(--line)',
         border: '1px solid var(--line)', marginTop: 1,
       }}>
