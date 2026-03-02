@@ -33,11 +33,10 @@ export default function Header() {
 
       <nav style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
         {[
-          ['#experience', 'Experience'],
-          ['#education',  'Education'],
-          ['#projects',   'Work'],
-        ].map(([href, label]) => (
-          <a key={href} href={href} style={{
+          ['#experience', 'Experience', 'nav-exp'],
+          ['#projects',   'Projects',   ''],
+        ].map(([href, label, cls]) => (
+          <a key={href} href={href} className={cls} style={{
             fontFamily: "'IBM Plex Mono', monospace",
             fontSize: '.7rem', letterSpacing: '.01em',
             color: 'var(--dim)', textDecoration: 'none',

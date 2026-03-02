@@ -268,3 +268,7 @@ body.ch .cur-r { width: 36px; height: 36px; border-color: rgba(0,102,255,.4); }
 
   #experience, #education, #projects, #contact { padding: 40px 24px; }
 }
+
+@media (max-width: 366px) {
+  .nav-exp { display: none; }
+}
