@@ -5,10 +5,10 @@ import { experience } from '@/data/experience'
 
 const details: Record<string, string[]> = {
   'M10c': [
-    'Built responsive web & mobile apps with React, TypeScript, Next.js, React Native for client projects',
-    'Implemented E2E testing with Playwright — reduced production bugs and improved release quality',
-    'Designed pixel-perfect, accessible UIs from Figma; optimised performance via Server Components & lazy loading',
-    'Managed full project lifecycle including API integration and CI/CD pipeline setup',
+    'Developed and maintained web applications and cross-platform mobile apps using React, Next.js, and React Native',
+    'Worked across multiple client projects simultaneously, adapting quickly to different technical requirements and codebases',
+    'Implemented E2E testing workflows using Maestro, improving test coverage across mobile app flows',
+    'Collaborated closely with designers and backend developers to deliver end-to-end product features across web and mobile platforms',
   ],
   'Mulder Tech': [
     'Built medical device traceability platform using React and Hyperledger Fabric blockchain',

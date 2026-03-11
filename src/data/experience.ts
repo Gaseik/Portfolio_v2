@@ -4,7 +4,7 @@ export const experience = [
     company: 'M10c',
     location: 'London',
     period: 'Oct 2025 — Now',
-    note: 'React, Next.js, React Native. E2E testing with Playwright. Agency environment — full lifecycle from Figma to CI/CD.',
+    note: 'React, Next.js, React Native. E2E testing with Maestro. Agency environment — multi-client projects across web & mobile.',
   },
   {
     role: 'Full Stack Developer',
