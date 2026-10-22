@@ -1,95 +1,92 @@
+'use client'
+
+import { useState } from 'react'
 import { osho } from '@/data/projects'
 
+const CARDS = [
+  { back: '☽', front: '☯', name: 'Clarity' },
+  { back: '✦', front: '❀', name: 'Creativity' },
+  { back: '☀', front: '✧', name: 'Courage' },
+]
+
+// fixed positions so server and client render the same markup
+const STARS = Array.from({ length: 36 }, (_, i) => ({
+  left: `${(i * 37.7) % 100}%`,
+  top: `${(i * 61.3) % 100}%`,
+  delay: `${(i * .37) % 3}s`,
+}))
+
 export default function OshoCard() {
+  const [flipped, setFlipped] = useState<number | null>(null)
+
+  const desc = osho.description
+    .replace('entirely solo', '<strong>entirely solo</strong>')
+    .replace('streaming AI interpretations', '<strong>streaming AI interpretations</strong>')
+
   return (
-    <>
-      <div className="proj-osho-wrap proj-osho-grid" style={{
-        border: '1px solid var(--line)', marginBottom: 1,
-        overflow: 'hidden', position: 'relative',
-      }}
-      >
-        <style>{`
-          .proj-osho-wrap::before {
-            content: ''; position: absolute;
-            top: 0; left: 0; right: 0; height: 2px;
-            background: var(--accent);
-            transform: scaleX(0); transform-origin: left;
-            transition: transform .25s;
-          }
-          .proj-osho-wrap:hover::before { transform: scaleX(1); }
-        `}</style>
-
-        {/* body */}
-        <div className="osho-body" style={{ padding: '40px 44px' }}>
-          <div className="file-tab">
-            <div className="dot" />
-            osho-zen-insight<span className="live"> · live</span>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 6, paddingTop: 16 }}>
-            <div style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: '1.5rem', fontWeight: 600, letterSpacing: '-.02em', color: 'var(--ink)' }}>
-              {osho.title}
-            </div>
-            <a href={osho.url} target="_blank" rel="noopener" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.65rem', color: 'var(--accent)', textDecoration: 'none', cursor: 'none' }}>
-              {osho.url.replace('https://', '')} ↗
-            </a>
-          </div>
-
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.65rem', color: 'var(--dim)', marginBottom: 20 }}>
-            {osho.subtitle} · {osho.meta}
-          </div>
-
-          <p style={{ fontSize: '.92rem', lineHeight: 1.8, color: 'var(--ink2)', maxWidth: 560, marginBottom: 28, borderLeft: '2px solid var(--line)', paddingLeft: 16 }}
-            dangerouslySetInnerHTML={{ __html: osho.description
-              .replace('entirely solo', '<strong style="color:var(--ink);font-weight:600">entirely solo</strong>')
-              .replace('streaming AI interpretations', '<strong style="color:var(--ink);font-weight:600">streaming AI interpretations</strong>') }}
-          />
-
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.62rem', color: 'var(--faint)', letterSpacing: '.04em', textTransform: 'uppercase', marginBottom: 8 }}>
-            architectural decisions
-          </div>
-
-          <div className="decisions">
-            {osho.decisions.map(({ key, value }) => (
-              <div className="dec" key={key}>
-                <div className="dec-k">{key}</div>
-                <div className="dec-v">{value}</div>
-              </div>
-            ))}
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-              {osho.tags.map(t => (
-                <span key={t} className={`otag${osho.highlightTags.includes(t) ? ' hi' : ''}`}>{t}</span>
-              ))}
-            </div>
-            <a href={osho.url} target="_blank" rel="noopener" className="btn p">View Live ↗</a>
-          </div>
+    <div className="osho">
+      <div className="osho-body">
+        <div className="file-tab">
+          <span className="dot" />
+          osho-zen-insight<span className="live"> · live</span>
         </div>
 
-        {/* visual */}
-        <div style={{ background: 'var(--ink2)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden', minHeight: 380 }} className="scanline">
-          <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
-            <div style={{ display: 'flex', gap: 12, alignItems: 'flex-end' }}>
-              <div className="t-card sm"><div className="t-glyph">☽</div></div>
-              <div className="t-card sm"><div className="t-glyph">✦</div></div>
-              <div className="t-card sm"><div className="t-glyph">☀</div></div>
+        <h3 className="osho-title">{osho.title}</h3>
+        <div className="osho-sub">{osho.subtitle} · {osho.meta}</div>
+        <p className="osho-desc" dangerouslySetInnerHTML={{ __html: desc }} />
+
+        <div className="mini-lbl">architectural decisions</div>
+        <div className="decisions">
+          {osho.decisions.map(({ key, value }) => (
+            <div className="dec" key={key}>
+              <div className="dec-k">{key}</div>
+              <div className="dec-v">{value}</div>
             </div>
-            <div className="t-card lg"><div className="t-glyph">⊕</div></div>
+          ))}
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+            {osho.tags.map(t => (
+              <span key={t} className={`otag${osho.highlightTags.includes(t) ? ' hi' : ''}`}>{t}</span>
+            ))}
           </div>
+          <a href={osho.url} target="_blank" rel="noopener" className="btn p">View Live <span className="arr">↗</span></a>
         </div>
       </div>
 
-      {/* metrics */}
-      <div className="osho-metrics" style={{ gap: 1, background: 'var(--line)', border: '1px solid var(--line)', borderTop: 'none', marginBottom: 1 }}>
+      <div className="osho-vis">
+        {STARS.map((s, i) => (
+          <span key={i} className="star" style={{ left: s.left, top: s.top, animationDelay: s.delay }} />
+        ))}
+        <div className="orbit" />
+        <div className="orbit o2" />
+        <div className="t-spread">
+          {CARDS.map((c, i) => (
+            <button
+              key={c.name}
+              className={`t-card${flipped === i ? ' flip' : ''}`}
+              onClick={() => setFlipped(f => (f === i ? null : i))}
+              aria-label={`Draw card: ${c.name}`}
+            >
+              <span className="t-inner">
+                <span className="t-face t-back"><span>{c.back}</span></span>
+                <span className="t-face t-front"><span>{c.front}</span><small>{c.name}</small></span>
+              </span>
+            </button>
+          ))}
+        </div>
+        <div className="t-hint">hover or tap to draw a card</div>
+      </div>
+
+      <div className="osho-metrics">
         {osho.metrics.map(({ n, l }) => (
-          <div key={l} style={{ background: 'var(--bg2)', padding: '16px 20px', textAlign: 'center' }} className="metric">
-            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '1.2rem', fontWeight: 500, color: 'var(--ink)', lineHeight: 1, marginBottom: 4 }}>{n}</div>
-            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.58rem', letterSpacing: '.06em', color: 'var(--dim)', textTransform: 'uppercase' }}>{l}</div>
+          <div key={l} className="metric">
+            <b>{n}</b>
+            <small>{l}</small>
           </div>
         ))}
       </div>
-    </>
+    </div>
   )
 }

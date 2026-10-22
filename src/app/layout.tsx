@@ -22,7 +22,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://portfolio-james-cheng.vercel.app'),
+  metadataBase: new URL('https://james-cheng.vercel.app'),
   title: 'James Cheng (程韋傑) — Frontend Engineer | React · Next.js · TypeScript',
   description:
     'James Cheng (程韋傑 / Wei Chieh Cheng) — Frontend Engineer with 6+ years experience building production web & mobile apps. React, Next.js, TypeScript, React Native. Based in London, UK. 前端工程師作品集。',
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     'portfolio', 'web developer', 'London', 'UK',
   ],
   alternates: {
-    canonical: 'https://portfolio-james-cheng.vercel.app',
+    canonical: 'https://james-cheng.vercel.app',
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: 'James Cheng (程韋傑) — Frontend Engineer',
     description:
       'Frontend Engineer with 6+ years experience. React, Next.js, TypeScript, React Native. London, UK. 前端工程師作品集。',
-    url: 'https://portfolio-james-cheng.vercel.app',
+    url: 'https://james-cheng.vercel.app',
     siteName: 'James Cheng',
     locale: 'en_GB',
     type: 'website',
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: 'James Cheng',
               alternateName: ['程韋傑', 'Wei Chieh Cheng'],
               jobTitle: 'Frontend Engineer',
-              url: 'https://portfolio-james-cheng.vercel.app',
+              url: 'https://james-cheng.vercel.app',
               sameAs: [
                 'https://github.com/Gaseik',
                 'https://www.linkedin.com/in/weichieh-cheng-fe',
@@ -96,7 +96,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body>
+      <body id="top">
+        <div className="grain" aria-hidden />
         <Cursor />
         <Header />
         <main>{children}</main>

@@ -1,72 +1,77 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const NAV = [
+  { id: 'experience', label: 'Experience', cls: 'nav-exp' },
+  { id: 'projects',   label: 'Projects',   cls: '' },
+]
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const [active, setActive] = useState('')
+  const [pill, setPill] = useState({ left: 0, width: 0, opacity: 0 })
+  const progressRef = useRef<HTMLDivElement>(null)
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({})
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 10)
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${max > 0 ? y / max : 0})`
+
+      let current = ''
+      for (const { id } of NAV) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top < window.innerHeight * .4) current = id
+      }
+      const contact = document.getElementById('contact')
+      if (contact && contact.getBoundingClientRect().top < window.innerHeight * .4) current = ''
+      setActive(current)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  return (
-    <header style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '0 48px', height: 56,
-      background: 'rgba(255,255,255,.92)',
-      backdropFilter: 'blur(12px)',
-      borderBottom: scrolled ? '1px solid var(--line)' : '1px solid transparent',
-      transition: 'border-color .3s',
-    }}>
-      <Link href="/" style={{
-        fontFamily: "'IBM Plex Mono', monospace",
-        fontSize: '.75rem', fontWeight: 500,
-        letterSpacing: '-.01em',
-        color: 'var(--ink)', textDecoration: 'none', cursor: 'none',
-      }}>
-        james<span style={{ color: 'var(--accent)' }}>.</span>dev
-      </Link>
+  useEffect(() => {
+    const measure = () => {
+      const el = active ? linkRefs.current[active] : null
+      if (el && el.offsetWidth) setPill({ left: el.offsetLeft, width: el.offsetWidth, opacity: 1 })
+      else setPill(p => ({ ...p, opacity: 0 }))
+    }
+    measure()
+    document.fonts?.ready.then(measure)
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [active])
 
-      <nav style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-        {[
-          ['#experience', 'Experience', 'nav-exp'],
-          ['#projects',   'Projects',   ''],
-        ].map(([href, label, cls]) => (
-          <a key={href} href={href} className={cls} style={{
-            fontFamily: "'IBM Plex Mono', monospace",
-            fontSize: '.7rem', letterSpacing: '.01em',
-            color: 'var(--dim)', textDecoration: 'none',
-            padding: '6px 12px', cursor: 'none',
-            transition: 'color .2s, background .2s',
-          }}
-          onMouseEnter={e => {
-            (e.target as HTMLElement).style.color = 'var(--ink)'
-            ;(e.target as HTMLElement).style.background = 'var(--bg2)'
-          }}
-          onMouseLeave={e => {
-            (e.target as HTMLElement).style.color = 'var(--dim)'
-            ;(e.target as HTMLElement).style.background = 'transparent'
-          }}>
-            {label}
+  return (
+    <>
+      <div className="progress" ref={progressRef} />
+      <header className={`hdr${scrolled ? ' scrolled' : ''}`}>
+        <Link href="/" className="logo">
+          james<span className="dot">.</span>dev
+        </Link>
+
+        <nav className="nav">
+          <span className="nav-pill" style={pill} />
+          {NAV.map(({ id, label, cls }) => (
+            <a
+              key={id} href={`#${id}`}
+              ref={el => { linkRefs.current[id] = el }}
+              className={`nav-a ${cls}${active === id ? ' on' : ''}`}
+            >
+              {label}
+            </a>
+          ))}
+          <a href="#contact" className="nav-cta">
+            <span className="wave">👋</span> Hire Me
           </a>
-        ))}
-        <a href="#contact" style={{
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontSize: '.7rem', letterSpacing: '.01em',
-          color: 'var(--bg)', textDecoration: 'none',
-          padding: '6px 12px', cursor: 'none',
-          background: 'var(--ink)', marginLeft: 8,
-          transition: 'background .2s',
-        }}
-        onMouseEnter={e => { (e.target as HTMLElement).style.background = 'var(--accent)' }}
-        onMouseLeave={e => { (e.target as HTMLElement).style.background = 'var(--ink)' }}>
-          Hire Me
-        </a>
-      </nav>
-    </header>
+        </nav>
+      </header>
+    </>
   )
 }
