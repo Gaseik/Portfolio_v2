@@ -1,17 +1,24 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
 export default function Footer() {
+  const [time, setTime] = useState('')
+
+  useEffect(() => {
+    const fmt = () => new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Europe/London',
+    }).format(new Date())
+    setTime(fmt())
+    const id = setInterval(() => setTime(fmt()), 1000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
-    <footer style={{
-      padding: '20px 48px',
-      borderTop: '1px solid var(--line)',
-      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-      flexWrap: 'wrap', gap: 12,
-    }}>
-      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.62rem', color: 'var(--faint)' }}>
-        © 2026 Wei Chieh Cheng (程韋傑) · London, UK
-      </div>
-      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.65rem', color: 'var(--dim)', fontWeight: 500 }}>
-        james.dev
-      </div>
+    <footer className="ftr">
+      <div>© 2026 Wei Chieh Cheng (程韋傑) · London, UK</div>
+      <div className="clock"><i />London {time || '--:--:--'}</div>
+      <a href="#top" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>back to top ↑</a>
     </footer>
   )
 }

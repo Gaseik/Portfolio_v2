@@ -97,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <div className="grain" aria-hidden />
         <Cursor />
         <Header />
         <main>{children}</main>

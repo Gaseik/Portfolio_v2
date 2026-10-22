@@ -29,6 +29,7 @@ export const projects = [
     impact: 'Rebuilt product pages for 4 service lines (NaaS/MaaS/SaaS/RaaS). +15% user engagement after redesign.',
     tags: ['React', 'MUI', 'RWD'],
     image: '/img/HanMockup.png',
+    tint: '#e8f0ff',
   },
   {
     num: '02',
@@ -37,6 +38,7 @@ export const projects = [
     impact: 'Regulatory compliance platform for medical device lifecycle tracking — dashboard, document control, AI regulatory intelligence, and 13+ role-based access across multi-tenant architecture.',
     tags: ['React', 'TypeScript', 'AWS', 'RBAC'],
     image: '/img/ConsultantPanelMockup.png',
+    tint: '#eef7f1',
   },
   {
     num: '03',
@@ -45,6 +47,7 @@ export const projects = [
     impact: "Led frontend for Taiwan's top AR startup. +20% interaction, −30% load time via Three.js + TypeScript overhaul.",
     tags: ['Three.js', 'TypeScript', 'AR'],
     image: '/img/Spe3dMockup.png',
+    tint: '#f3edff',
   },
   {
     num: '04',
@@ -53,6 +56,7 @@ export const projects = [
     impact: 'Migrated corporate site from WordPress to Gatsby.js + React — SEO optimisation, i18n, RWD, and marketing-aligned animations.',
     tags: ['Gatsby.js', 'React', 'i18n', 'SEO', 'RWD'],
     image: '/img/MlyticsMockup.png',
+    tint: '#fff1f6',
     url: 'https://www.mlytics.com',
     urlLabel: 'mlytics.com ↗',
   },
