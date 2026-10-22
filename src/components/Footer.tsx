@@ -18,7 +18,7 @@ export default function Footer() {
     <footer className="ftr">
       <div>© 2026 Wei Chieh Cheng (程韋傑) · London, UK</div>
       <div className="clock"><i />London {time || '--:--:--'}</div>
-      <a href="#top" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>back to top ↑</a>
+      <a href="#top">back to top ↑</a>
     </footer>
   )
 }

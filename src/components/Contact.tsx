@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useInView, useMagnetic } from '@/lib/hooks'
-
-const EMAIL = 'james800822@hotmail.com'
+import { EMAIL, GITHUB, LINKEDIN } from '@/data/links'
 
 export default function Contact() {
   const [bigRef, inView] = useInView<HTMLHeadingElement>(.3)
@@ -11,12 +10,16 @@ export default function Contact() {
   const emailRef = useMagnetic<HTMLButtonElement>(.15)
   const ghRef = useMagnetic<HTMLAnchorElement>(.3)
   const liRef = useMagnetic<HTMLAnchorElement>(.3)
+  const toastTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
+
+  useEffect(() => () => clearTimeout(toastTimer.current), [])
 
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(EMAIL)
       setToast(true)
-      setTimeout(() => setToast(false), 2000)
+      clearTimeout(toastTimer.current)
+      toastTimer.current = setTimeout(() => setToast(false), 2000)
     } catch {
       window.location.href = `mailto:${EMAIL}`
     }
@@ -53,8 +56,8 @@ export default function Contact() {
 
         <div className="reveal" style={{ '--d': '.35s', display: 'flex', gap: 10, flexWrap: 'wrap' } as React.CSSProperties}>
           <a href={`mailto:${EMAIL}`} className="btn">Send email <span className="arr">↗</span></a>
-          <a ref={ghRef} href="https://github.com/Gaseik" target="_blank" rel="noopener" className="btn">GitHub <span className="arr">↗</span></a>
-          <a ref={liRef} href="https://www.linkedin.com/in/weichieh-cheng-fe" target="_blank" rel="noopener" className="btn">LinkedIn <span className="arr">↗</span></a>
+          <a ref={ghRef} href={GITHUB} target="_blank" rel="noopener" className="btn">GitHub <span className="arr">↗</span></a>
+          <a ref={liRef} href={LINKEDIN} target="_blank" rel="noopener" className="btn">LinkedIn <span className="arr">↗</span></a>
         </div>
       </div>
 

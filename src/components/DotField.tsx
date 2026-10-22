@@ -16,7 +16,7 @@ export default function DotField() {
     if (!canvas || !ctx) return
 
     const reduce = prefersReducedMotion()
-    let w = 0, h = 0, raf = 0, t = 0, visible = true
+    let w = 0, h = 0, raf = 0, t = 0, visible = false
     let mx = -9999, my = -9999, tx = -9999, ty = -9999
 
     const resize = () => {
@@ -28,34 +28,47 @@ export default function DotField() {
       if (reduce) draw()
     }
 
+    const BUCKETS = 4
+    const buckets: Path2D[] = []
+
     const draw = () => {
       ctx.clearRect(0, 0, w, h)
       mx += (tx - mx) * .12
       my += (ty - my) * .12
+      // idle dots are batched into a few paths by brightness; only dots near the pointer are drawn individually
+      for (let i = 0; i < BUCKETS; i++) buckets[i] = new Path2D()
       for (let x = GAP / 2; x < w; x += GAP) {
         for (let y = GAP / 2; y < h; y += GAP) {
+          const wave = reduce ? 0 : Math.sin(x * .02 + y * .015 + t) * .5 + .5
           const dx = x - mx, dy = y - my
           const d = Math.hypot(dx, dy)
-          const f = Math.max(0, 1 - d / RADIUS)
-          const wave = reduce ? 0 : Math.sin(x * .02 + y * .015 + t) * .5 + .5
+          if (d >= RADIUS) {
+            const path = buckets[Math.min(BUCKETS - 1, Math.floor(wave * BUCKETS))]
+            const size = .9 + wave * .5
+            path.moveTo(x + size, y)
+            path.arc(x, y, size, 0, Math.PI * 2)
+            continue
+          }
+          const f = 1 - d / RADIUS
           const push = f * f * 18
           const px = x + (d ? (dx / d) * push : 0)
           const py = y + (d ? (dy / d) * push : 0)
-          const size = .9 + wave * .5 + f * 2.2
-          ctx.fillStyle = f > 0
-            ? `rgba(${Math.round(124 * (1 - f))}, ${Math.round(58 + 44 * f)}, ${Math.round(237 + 18 * f)}, ${.18 + f * .7})`
-            : `rgba(10,10,10,${.07 + wave * .07})`
+          ctx.fillStyle = `rgba(${Math.round(124 * (1 - f))}, ${Math.round(58 + 44 * f)}, ${Math.round(237 + 18 * f)}, ${.18 + f * .7})`
           ctx.beginPath()
-          ctx.arc(px, py, size, 0, Math.PI * 2)
+          ctx.arc(px, py, .9 + wave * .5 + f * 2.2, 0, Math.PI * 2)
           ctx.fill()
         }
+      }
+      for (let i = 0; i < BUCKETS; i++) {
+        ctx.fillStyle = `rgba(10,10,10,${.07 + ((i + .5) / BUCKETS) * .07})`
+        ctx.fill(buckets[i])
       }
     }
 
     const loop = () => {
       t += .012
-      if (visible) draw()
-      raf = requestAnimationFrame(loop)
+      draw()
+      raf = visible ? requestAnimationFrame(loop) : 0
     }
 
     const onMove = (e: PointerEvent) => {
@@ -65,7 +78,11 @@ export default function DotField() {
     }
     const onLeave = () => { mx = my = tx = ty = -9999 }
 
-    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting })
+    // the loop only runs while the hero is on screen
+    const io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting
+      if (visible && !raf && !reduce) raf = requestAnimationFrame(loop)
+    })
     io.observe(canvas)
 
     resize()
@@ -73,7 +90,6 @@ export default function DotField() {
     if (!reduce) {
       window.addEventListener('pointermove', onMove, { passive: true })
       document.addEventListener('mouseleave', onLeave)
-      loop()
     }
 
     return () => {

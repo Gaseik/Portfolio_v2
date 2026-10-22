@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react'
 import DotField from './DotField'
 import { useCountUp, useMagnetic, useTilt, useYoe, prefersReducedMotion } from '@/lib/hooks'
+import { EMAIL, GITHUB, LINKEDIN } from '@/data/links'
 
-const ROLES = ['React & Next.js apps', 'iOS & Android apps', '3D / AR experiences', 'AI-powered products', 'pixel-perfect UIs']
+const ROLES = ['React & Next.js apps', 'iOS & Android apps', '3D / AR experiences', 'AI-automated dev workflows', 'pixel-perfect UIs']
 
 const DATA_ROWS = [
   { key: 'currently',    val: 'M10c · London',      cls: 'accent', href: 'https://www.m10c.com/' },
@@ -84,22 +85,24 @@ export default function Hero() {
           <SplitWord word="Cheng" offset={5} grad />
         </h1>
 
-        <div className="typer" aria-live="polite">
-          <span aria-hidden>{'> '}</span>I build <span className="t">{role}</span><span className="caret" />
+        <p className="sr-only">I build {ROLES.join(', ')}.</p>
+        <div className="typer" aria-hidden>
+          {'> '}I build <span className="t">{role}</span><span className="caret" />
         </div>
 
         <p className="hero-lede">
-          Frontend Engineer with <strong>{yoe}+ years</strong> shipping production web &amp; mobile products — from{' '}
+          Frontend Engineer with <strong>{yoe}+ years</strong> shipping web &amp; mobile products — from{' '}
           <span className="hl"><strong>AR experiences</strong></span> (Three.js) to{' '}
           <span className="hl v"><strong>iOS &amp; Android</strong></span> (React Native) to{' '}
           <span className="hl p"><strong>AI SaaS</strong></span>.
+          I automate dev workflows with AI agents, and a psychology background helps me bridge design and engineering.
           Currently at <a href="https://www.m10c.com/" target="_blank" rel="noopener" className="inline-link">M10c</a>, London.
         </p>
 
         <div className="hero-ctas">
-          <a ref={emailRef} href="mailto:james800822@hotmail.com" className="btn p">✉ Email Me</a>
-          <a ref={ghRef} href="https://github.com/Gaseik" target="_blank" rel="noopener" className="btn">GitHub <span className="arr">↗</span></a>
-          <a ref={liRef} href="https://www.linkedin.com/in/weichieh-cheng-fe" target="_blank" rel="noopener" className="btn">LinkedIn <span className="arr">↗</span></a>
+          <a ref={emailRef} href={`mailto:${EMAIL}`} className="btn p">✉ Email Me</a>
+          <a ref={ghRef} href={GITHUB} target="_blank" rel="noopener" className="btn">GitHub <span className="arr">↗</span></a>
+          <a ref={liRef} href={LINKEDIN} target="_blank" rel="noopener" className="btn">LinkedIn <span className="arr">↗</span></a>
         </div>
       </div>
 

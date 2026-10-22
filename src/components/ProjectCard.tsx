@@ -26,7 +26,7 @@ export default function ProjectCard({ num, cat, title, impact, tags, image, tint
 
   return (
     <div className="reveal" style={{ '--d': delay } as React.CSSProperties}>
-      <article className="proj-card" ref={ref} data-cursor={url ? 'visit ↗' : 'peek'}>
+      <article className="proj-card" ref={ref} data-cursor={url ? 'visit ↗' : undefined}>
         <div className="proj-shot" style={tint ? { '--tint': tint } as React.CSSProperties : undefined}>
           <span className="proj-num">{num}</span>
           {!imgError && (
@@ -50,7 +50,7 @@ export default function ProjectCard({ num, cat, title, impact, tags, image, tint
               {tags.map(t => <span className="cc" key={t}>{t}</span>)}
             </div>
             {url
-              ? <a href={url} target="_blank" rel="noopener" className="proj-link">{urlLabel ?? url}</a>
+              ? <a href={url} target="_blank" rel="noopener" className="proj-link stretched">{urlLabel ?? url}</a>
               : <div className="offline">Company project · offline</div>}
           </div>
         </div>

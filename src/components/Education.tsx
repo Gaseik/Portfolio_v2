@@ -1,8 +1,5 @@
 import { education } from '@/data/experience'
 
-const EMOJI = ['🎓', '🧠']
-const BIG = ['MSc', 'BSc']
-
 export default function Education() {
   return (
     <section id="education" className="sec" style={{ paddingTop: 0 }}>
@@ -20,11 +17,11 @@ export default function Education() {
         {education.map((edu, i) => (
           <div key={edu.school} className="reveal-s" style={{ '--d': `${i * .1}s` } as React.CSSProperties}>
             <div className="edu-card">
-              <span className="edu-emoji" aria-hidden>{EMOJI[i]}</span>
+              <span className="edu-emoji" aria-hidden>{edu.emoji}</span>
               <span className="edu-year">{edu.year}</span>
               <div className="edu-deg">{edu.degree}</div>
               <div className="edu-school">{edu.school}</div>
-              <span className="edu-big" aria-hidden>{BIG[i]}</span>
+              <span className="edu-big" aria-hidden>{edu.badge}</span>
             </div>
           </div>
         ))}

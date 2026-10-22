@@ -37,9 +37,15 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    const el = active ? linkRefs.current[active] : null
-    if (el) setPill({ left: el.offsetLeft, width: el.offsetWidth, opacity: 1 })
-    else setPill(p => ({ ...p, opacity: 0 }))
+    const measure = () => {
+      const el = active ? linkRefs.current[active] : null
+      if (el && el.offsetWidth) setPill({ left: el.offsetLeft, width: el.offsetWidth, opacity: 1 })
+      else setPill(p => ({ ...p, opacity: 0 }))
+    }
+    measure()
+    document.fonts?.ready.then(measure)
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
   }, [active])
 
   return (

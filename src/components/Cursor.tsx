@@ -8,6 +8,7 @@ export default function Cursor() {
   const [label, setLabel] = useState('')
 
   useEffect(() => {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
     let mx = -100, my = -100, rx = -100, ry = -100, raf = 0
     const body = document.body
 
@@ -26,6 +27,7 @@ export default function Cursor() {
       if (el.closest('a, button, .t-card, .stat, .otag')) body.classList.add('ch')
       else body.classList.remove('ch')
     }
+    const onLeave = () => body.classList.remove('ch', 'cl', 'cdown')
     const onDown = () => body.classList.add('cdown')
     const onUp   = () => body.classList.remove('cdown')
 
@@ -33,6 +35,7 @@ export default function Cursor() {
     document.addEventListener('mouseover', onOver)
     document.addEventListener('mousedown', onDown)
     document.addEventListener('mouseup', onUp)
+    document.documentElement.addEventListener('mouseleave', onLeave)
 
     const tick = () => {
       if (curRef.current) curRef.current.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`
@@ -49,6 +52,8 @@ export default function Cursor() {
       document.removeEventListener('mouseover', onOver)
       document.removeEventListener('mousedown', onDown)
       document.removeEventListener('mouseup', onUp)
+      document.documentElement.removeEventListener('mouseleave', onLeave)
+      onLeave()
     }
   }, [])
 
