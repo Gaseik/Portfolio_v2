@@ -2,17 +2,13 @@ import { ImageResponse } from 'next/og'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-export const alt = 'James Cheng — Frontend Engineer'
+export const alt = 'James Cheng, frontend engineer in London'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 export default async function OGImage() {
-  const ibmPlexMonoBold = readFileSync(
-    join(process.cwd(), 'src/assets/fonts/IBMPlexMono-Bold.ttf')
-  )
-  const ibmPlexMonoRegular = readFileSync(
-    join(process.cwd(), 'src/assets/fonts/IBMPlexMono-Regular.ttf')
-  )
+  const bold = readFileSync(join(process.cwd(), 'src/assets/fonts/BricolageGrotesque-800.ttf'))
+  const regular = readFileSync(join(process.cwd(), 'src/assets/fonts/BricolageGrotesque-400.ttf'))
 
   return new ImageResponse(
     (
@@ -23,95 +19,39 @@ export default async function OGImage() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          padding: '80px',
-          backgroundColor: '#0a0a0a',
-          fontFamily: 'IBM Plex Mono',
+          padding: '64px 72px',
+          backgroundColor: '#ffffff',
+          color: '#1f2b4d',
+          fontFamily: 'Bricolage Grotesque',
         }}
       >
-        {/* Top & Middle */}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span
-            style={{
-              fontSize: 20,
-              color: '#0066ff',
-              marginBottom: 32,
-              letterSpacing: -0.5,
-            }}
-          >
-            james.dev
-          </span>
-          <span
-            style={{
-              fontSize: 72,
-              fontWeight: 700,
-              color: '#ffffff',
-              letterSpacing: -2,
-              lineHeight: 1.1,
-            }}
-          >
-            James Cheng
-          </span>
+        <span style={{ fontSize: 26 }}>Frontend engineer · React, Next.js, React Native</span>
+
+        <span style={{ fontSize: 196, fontWeight: 800, letterSpacing: -8, lineHeight: 0.9 }}>
+          James Cheng
+        </span>
+
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: 26, color: '#5f6780' }}>London, UK</span>
           <span
             style={{
               fontSize: 24,
-              color: '#888888',
-              marginTop: 20,
-              letterSpacing: -0.5,
-            }}
-          >
-            Frontend Engineer · React / Next.js / TypeScript
-          </span>
-        </div>
-
-        {/* Bottom */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-          }}
-        >
-          <span style={{ fontSize: 18, color: '#888888' }}>London, UK</span>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              fontSize: 16,
-              color: '#888888',
-              border: '1px solid #333333',
+              fontWeight: 800,
+              backgroundColor: '#f7941d',
               borderRadius: 999,
-              padding: '8px 20px',
+              padding: '14px 28px',
             }}
           >
-            <div
-              style={{
-                width: 8,
-                height: 8,
-                borderRadius: '50%',
-                backgroundColor: '#16a34a',
-              }}
-            />
-            <span>Available for opportunities</span>
-          </div>
+            Available for new roles
+          </span>
         </div>
       </div>
     ),
     {
       ...size,
       fonts: [
-        {
-          name: 'IBM Plex Mono',
-          data: ibmPlexMonoBold,
-          style: 'normal',
-          weight: 700,
-        },
-        {
-          name: 'IBM Plex Mono',
-          data: ibmPlexMonoRegular,
-          style: 'normal',
-          weight: 400,
-        },
+        { name: 'Bricolage Grotesque', data: bold, style: 'normal', weight: 800 },
+        { name: 'Bricolage Grotesque', data: regular, style: 'normal', weight: 400 },
       ],
     }
   )

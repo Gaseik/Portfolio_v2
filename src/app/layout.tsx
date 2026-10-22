@@ -1,23 +1,14 @@
 import type { Metadata } from 'next'
-import { IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google'
+import { Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
-import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import Cursor from '@/components/Cursor'
+import Reveal from '@/components/Reveal'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-const ibmPlexSans = IBM_Plex_Sans({
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
   variable: '--font-sans',
-  display: 'swap',
-})
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['300', '400', '500'],
-  variable: '--font-mono',
   display: 'swap',
 })
 
@@ -60,8 +51,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" className={bricolage.variable} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -97,10 +89,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <Cursor />
-        <Header />
         <main>{children}</main>
         <Footer />
+        <Reveal />
         <Analytics />
         <SpeedInsights />
       </body>

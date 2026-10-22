@@ -1,92 +1,60 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { experience } from '@/data/experience'
-
-const details: Record<string, string[]> = {
-  'M10c': [
-    'Developed and maintained web applications and cross-platform mobile apps using React, Next.js, and React Native',
-    'Worked across multiple client projects simultaneously, adapting quickly to different technical requirements and codebases',
-    'Implemented E2E testing workflows using Maestro, improving test coverage across mobile app flows',
-    'Collaborated closely with designers and backend developers to deliver end-to-end product features across web and mobile platforms',
-  ],
-  'Mulder Tech': [
-    'Built medical device traceability platform using React and Hyperledger Fabric blockchain',
-    'Implemented features for tracking usage, inventory, and disposal of medical supplies',
-    'Managed AWS deployment and CI/CD pipelines for reliable full-stack delivery',
-    'Collaborated with backend developers to design and integrate RESTful APIs',
-  ],
-  'Spe3d Co.': [
-    "Led frontend for Taiwan's leading AR startup — integrated 3D/AR experiences using Three.js & TypeScript",
-    'Boosted user interaction by 20% through optimised 3D rendering and interaction design',
-    'Overhauled build workflow — cut load times by 30% and improved scalability in Agile environment',
-    'Collaborated cross-functionally with design and product teams on feature delivery',
-  ],
-  'Hannlync Co.': [
-    'Implemented mobile-first responsive designs with UX/UI team — improved engagement by 15%',
-    'Led development of personnel tracking app for UMC during COVID with real-time data processing',
-    'Built live-streaming platform for corporate shareholder meetings using multi-national servers',
-    'Developed 4 B2B product pages across NaaS / MaaS / SaaS / RaaS service lines',
-  ],
-}
+import { useState } from 'react'
+import { education, experience } from '@/data/experience'
+import Years from './Years'
 
 export default function Experience() {
-  const [yoe, setYoe] = useState(6)
-
-  useEffect(() => {
-    const y = Math.floor((Date.now() - new Date(2019, 6, 1).getTime()) / (1000 * 60 * 60 * 24 * 365.25))
-    setYoe(y)
-  }, [])
+  const [open, setOpen] = useState<string | null>(experience[0].company)
 
   return (
-    <section id="experience" style={{ borderTop: '1px solid var(--line)' }}>
-      <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 40 }}>
-        <span className="sec-ttl">experience</span>
-        <span className="sec-note">{yoe}+ years</span>
+    <section id="experience" className="lineup" aria-labelledby="exp-h">
+      <h2 id="exp-h" className="sec-head" data-reveal><span><Years />+ years, four teams</span></h2>
+
+      <h3 className="lineup-part">Experience</h3>
+      <div data-reveal>
+        {experience.map(exp => {
+          const isOpen = open === exp.company
+          const id = `exp-${exp.company.replace(/\W+/g, '').toLowerCase()}`
+          return (
+            <div key={exp.company}>
+              <button
+                type="button" className="row"
+                aria-expanded={isOpen} aria-controls={id}
+                onClick={() => setOpen(isOpen ? null : exp.company)}
+              >
+                <span className="what"><span className="tog" aria-hidden="true">+</span>{exp.role}</span>
+                <span className="where">{exp.company}</span>
+                <span className="city">{exp.location}</span>
+                <span className="when num">{exp.period}</span>
+              </button>
+              <div id={id} className={`row-more${isOpen ? ' open' : ''}`} role="region" aria-label={`${exp.company} details`}>
+                <div>
+                  <ul>
+                    <li className="row-note">
+                      {exp.note}
+                      {exp.url && <> <a className="link" href={exp.url} target="_blank" rel="noopener" tabIndex={isOpen ? 0 : -1}>{exp.url.replace(/https?:\/\/(www\.)?|\/$/g, '')} ↗</a></>}
+                    </li>
+                    {exp.details.map(d => <li key={d}>{d}</li>)}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )
+        })}
       </div>
 
-      <div className="exp-list" style={{ gap: 1, background: 'var(--line)', border: '1px solid var(--line)' }}>
-        {experience.map((exp, i) => (
-          <ExpItem key={exp.company} exp={exp} items={details[exp.company] ?? []} delay={i % 2 === 1 ? '.08s' : '0s'} />
+      <h3 className="lineup-part">Education</h3>
+      <div data-reveal>
+        {education.map(edu => (
+          <div key={edu.school} className="row">
+            <span className="what"><span className="tog" aria-hidden="true" /> {edu.degree}</span>
+            <span className="where">{edu.school.split(' · ')[0]}</span>
+            <span className="city">{edu.school.includes('Taiwan') ? 'Taichung' : 'London'}</span>
+            <span className="when num">{edu.year}</span>
+          </div>
         ))}
       </div>
     </section>
-  )
-}
-
-function ExpItem({ exp, items, delay }: { exp: typeof experience[0], items: string[], delay: string }) {
-  const [hov, setHov] = useState(false)
-
-  return (
-    <div
-      className="exp-item reveal"
-      style={{ background: hov ? 'var(--bg3)' : 'var(--bg2)', padding: '28px 32px', transition: 'background .3s', transitionDelay: delay }}
-      onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
-    >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 10 }}>
-        <div>
-          <div style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: '.9rem', fontWeight: 600, color: 'var(--ink)', marginBottom: 2 }}>
-            {exp.role}
-          </div>
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.62rem', color: 'var(--accent)' }}>
-            <>{exp.company === 'M10c' ? <a href='https://www.m10c.com/' target='_blank' rel='noopener' style={{color:'var(--accent)',textDecoration:'none',borderBottom:'1px solid rgba(0,102,255,.3)',cursor:'none'}}>M10c</a> : exp.company} · {exp.location}</>
-          </div>
-        </div>
-        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '.65rem', color: 'var(--ink2)', whiteSpace: 'nowrap' }}>
-          {exp.period}
-        </div>
-      </div>
-
-      <p style={{ fontSize: '.85rem', lineHeight: 1.75, color: 'var(--ink2)' }}
-        dangerouslySetInnerHTML={{ __html: exp.note.replace(/(React \+ Hyperledger Fabric|Three\.js \+ TypeScript|Agency environment)/g,
-          '<strong style="color:var(--ink);font-weight:600">$1</strong>') }}
-      />
-
-      <div className="exp-details">
-        <ul>
-          {items.map((item, idx) => <li key={idx}>{item}</li>)}
-        </ul>
-      </div>
-    </div>
   )
 }

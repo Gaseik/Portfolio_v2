@@ -9,8 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-sans)', 'IBM Plex Sans', 'sans-serif'],
-        mono: ['var(--font-mono)', 'IBM Plex Mono', 'monospace'],
+        sans: ['var(--font-sans)', 'Bricolage Grotesque', 'sans-serif'],
       },
     },
   },
