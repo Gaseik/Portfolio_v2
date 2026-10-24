@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import DotField from './DotField'
 import { useCountUp, useMagnetic, useTilt, useYoe, prefersReducedMotion } from '@/lib/hooks'
 import { EMAIL, GITHUB, LINKEDIN } from '@/data/links'
+import { companyCount, countryCount } from '@/data/experience'
 
 const ROLES = ['React & Next.js apps', 'iOS & Android apps', '3D / AR experiences', 'AI-automated dev workflows', 'pixel-perfect UIs']
 
@@ -112,8 +113,8 @@ export default function Hero() {
 
           <div className="stat-row">
             <Stat n={yoe} suffix="+" label="years" start={ready} />
-            <Stat n={4} suffix="" label="companies" start={ready} />
-            <Stat n={2} suffix="" label="countries" start={ready} />
+            <Stat n={companyCount} suffix="" label="companies" start={ready} />
+            <Stat n={countryCount} suffix="" label="countries" start={ready} />
           </div>
 
           {DATA_ROWS.map(({ key, val, cls, href }) => (

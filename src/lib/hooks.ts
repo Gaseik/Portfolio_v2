@@ -1,13 +1,12 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-
-export const CAREER_START = new Date(2019, 6, 1)
+import { yearsOfExperience } from '@/data/links'
 
 export function useYoe() {
   const [yoe, setYoe] = useState(6)
   useEffect(() => {
-    setYoe(Math.floor((Date.now() - CAREER_START.getTime()) / (1000 * 60 * 60 * 24 * 365.25)))
+    setYoe(yearsOfExperience())
   }, [])
   return yoe
 }

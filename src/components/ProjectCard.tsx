@@ -15,17 +15,18 @@ interface Props {
   delay?: string
   url?: string
   urlLabel?: string
+  wide?: boolean
 }
 
-export default function ProjectCard({ num, cat, title, impact, tags, image, tint, delay = '0s', url, urlLabel }: Props) {
+export default function ProjectCard({ num, cat, title, impact, tags, image, tint, delay = '0s', url, urlLabel, wide }: Props) {
   const [imgError, setImgError] = useState(false)
-  const ref = useTilt<HTMLElement>(5)
+  const ref = useTilt<HTMLElement>(wide ? 2.5 : 5)
 
   // bold the numbers in impact
   const boldImpact = impact.replace(/(\+[\d]+%|−[\d]+%|UMC|13\+)/g, '<strong>$1</strong>')
 
   return (
-    <div className="reveal" style={{ '--d': delay } as React.CSSProperties}>
+    <div className={`reveal${wide ? ' proj-wide' : ''}`} style={{ '--d': delay } as React.CSSProperties}>
       <article className="proj-card" ref={ref} data-cursor={url ? 'visit ↗' : undefined}>
         <div className="proj-shot" style={tint ? { '--tint': tint } as React.CSSProperties : undefined}>
           <span className="proj-num">{num}</span>
@@ -34,7 +35,7 @@ export default function ProjectCard({ num, cat, title, impact, tags, image, tint
               src={image}
               alt={title}
               fill
-              sizes="(max-width: 640px) 100vw, 50vw"
+              sizes={wide ? "(max-width: 1080px) 100vw, 60vw" : "(max-width: 640px) 100vw, 50vw"}
               style={{ objectFit: 'contain' }}
               onError={() => setImgError(true)}
             />

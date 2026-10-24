@@ -70,3 +70,6 @@ export const education = [
     badge: 'BSc',
   },
 ]
+
+export const companyCount = new Set(experience.map(e => e.company)).size
+export const countryCount = new Set(experience.map(e => e.location)).size

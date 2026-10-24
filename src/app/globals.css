@@ -408,6 +408,13 @@ a.dt-val:hover { padding-left: 6px; }
 .metric small { font-family: var(--mono); font-size: .58rem; letter-spacing: .06em; color: var(--dim); text-transform: uppercase; }
 
 .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.proj-wide { grid-column: 1 / -1; }
+.proj-wide .proj-title { font-size: clamp(1.4rem, 2.4vw, 2rem); }
+@media (min-width: 1081px) {
+  .proj-wide .proj-card { display: grid; grid-template-columns: 1.45fr 1fr; gap: 8px 28px; align-items: center; padding-right: 28px; padding-bottom: 14px; }
+  .proj-wide .proj-shot { margin-bottom: 0; }
+  .proj-wide .proj-body { padding: 8px 0; }
+}
 .proj-card {
   position: relative; border-radius: 22px; padding: 14px 14px 24px; background: #fff;
   border: 1px solid var(--line); transform-style: preserve-3d;
