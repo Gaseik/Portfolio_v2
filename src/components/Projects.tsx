@@ -11,7 +11,7 @@ export default function Projects() {
           <h2 className="sec-big">Selected<br /><em>work.</em></h2>
         </div>
         <p className="sec-note reveal" style={{ '--d': '.1s' } as React.CSSProperties}>
-          A solo AI side project, plus products shipped with teams — most recent first.
+          Two products of my own, plus work shipped with teams.
         </p>
       </div>
 
@@ -19,7 +19,7 @@ export default function Projects() {
 
       <div className="proj-grid">
         {projects.map((p, i) => (
-          <ProjectCard key={p.title} {...p} delay={`${(i % 2) * 0.1}s`} />
+          <ProjectCard key={p.title} {...p} delay={`${(p.wide ? 0 : i % 2) * 0.1}s`} />
         ))}
       </div>
     </section>

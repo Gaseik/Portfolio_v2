@@ -24,6 +24,18 @@ export const osho = {
 export const projects = [
   {
     num: '01',
+    cat: 'B2B SaaS · Own product · 2026',
+    title: 'wushi 晤室',
+    impact: 'Booking and back office for psychotherapy clinics, replacing a Google Form feeding a spreadsheet. Intake, therapist matching, clash-free room scheduling, billing records and role-based permissions in one multi-tenant platform, with a bilingual landing page.',
+    tags: ['React', 'TypeScript', 'Hono', 'Drizzle', 'Neon Postgres', 'Vite'],
+    image: '/img/WushiMockup.png',
+    tint: '#f5f4f0',
+    url: 'https://wushi-phi.vercel.app/',
+    urlLabel: 'wushi-phi.vercel.app ↗',
+    wide: true,
+  },
+  {
+    num: '02',
     cat: 'Enterprise · Hannlync Co.',
     title: 'B2B Product Platform',
     impact: 'Rebuilt product pages for 4 service lines (NaaS/MaaS/SaaS/RaaS). +15% user engagement after redesign.',
@@ -32,7 +44,7 @@ export const projects = [
     tint: '#e8f0ff',
   },
   {
-    num: '02',
+    num: '03',
     cat: 'Enterprise SPA · Mulder Tech',
     title: 'Consultant Panel',
     impact: 'Regulatory compliance platform for medical device lifecycle tracking — dashboard, document control, AI regulatory intelligence, and 13+ role-based access across multi-tenant architecture.',
@@ -41,7 +53,7 @@ export const projects = [
     tint: '#eef7f1',
   },
   {
-    num: '03',
+    num: '04',
     cat: 'AR / 3D · Spe3d Co.',
     title: 'AR Experience Platform',
     impact: 'Marker-based AR that overlays 3D objects onto real-world scenes via the phone camera. GLTF/GLB assets with custom lighting: +20% interaction, −30% initial load via progressive asset loading.',
@@ -50,7 +62,7 @@ export const projects = [
     tint: '#f3edff',
   },
   {
-    num: '04',
+    num: '05',
     cat: 'Freelance · Mlytics',
     title: 'Official Website Reconstruction',
     impact: 'Migrated corporate site from WordPress to Gatsby.js + React — SEO optimisation, i18n, RWD, and marketing-aligned animations.',

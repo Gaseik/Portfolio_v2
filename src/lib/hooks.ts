@@ -1,8 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-
-export const CAREER_START = new Date(2019, 6, 1)
+import { CAREER_START } from '@/data/links'
 
 export function useYoe() {
   const [yoe, setYoe] = useState(6)
