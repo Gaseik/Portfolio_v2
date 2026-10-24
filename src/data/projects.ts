@@ -1,5 +1,6 @@
 export const osho = {
   title: 'Osho Zen Insight',
+  short: 'Osho Zen',
   url: 'https://osho-tarot.vercel.app',
   subtitle: 'AI Tarot Platform · Solo Project · 2024–Present',
   meta: 'Next.js 16 / Groq / TypeScript',
@@ -26,6 +27,7 @@ export const projects = [
     num: '01',
     cat: 'B2B SaaS · Own product · 2026',
     title: 'wushi 晤室',
+    short: 'wushi',
     impact: 'Booking and back office for psychotherapy clinics, replacing a Google Form feeding a spreadsheet. Intake, therapist matching, clash-free room scheduling, billing records and role-based permissions in one multi-tenant platform, with a bilingual landing page.',
     tags: ['React', 'TypeScript', 'Hono', 'Drizzle', 'Neon Postgres', 'Vite'],
     image: '/img/WushiMockup.png',

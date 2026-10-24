@@ -20,7 +20,7 @@ interface Props {
 
 export default function ProjectCard({ num, cat, title, impact, tags, image, tint, delay = '0s', url, urlLabel, wide }: Props) {
   const [imgError, setImgError] = useState(false)
-  const ref = useTilt<HTMLElement>(5)
+  const ref = useTilt<HTMLElement>(wide ? 2.5 : 5)
 
   // bold the numbers in impact
   const boldImpact = impact.replace(/(\+[\d]+%|−[\d]+%|UMC|13\+)/g, '<strong>$1</strong>')

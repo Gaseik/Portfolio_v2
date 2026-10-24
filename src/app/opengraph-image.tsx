@@ -1,11 +1,15 @@
 import { ImageResponse } from 'next/og'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { CAREER_START } from '@/data/links'
+import { yearsOfExperience } from '@/data/links'
+import { companyCount, countryCount, experience } from '@/data/experience'
+import { osho, projects } from '@/data/projects'
 
 export const alt = 'James Cheng — Frontend Engineer'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
+// rebuilt daily so the years count doesn't freeze at the deploy date
+export const revalidate = 86400
 
 const GRAD = 'linear-gradient(110deg, #0066ff 0%, #7c3aed 50%, #ec4899 100%)'
 const MONO = 'IBM Plex Mono'
@@ -13,17 +17,18 @@ const SANS = 'IBM Plex Sans'
 
 export default async function OGImage() {
   const font = (file: string) => readFileSync(join(process.cwd(), 'src/assets/fonts', file))
-  const yoe = Math.floor((Date.now() - CAREER_START.getTime()) / (1000 * 60 * 60 * 24 * 365.25))
+  const yoe = yearsOfExperience()
+  const ownProducts = [...projects.flatMap(p => ('short' in p ? [p.short] : [])), osho.short]
 
   const stats = [
     { n: `${yoe}+`, l: 'years' },
-    { n: '4', l: 'companies' },
-    { n: '2', l: 'countries' },
+    { n: String(companyCount), l: 'companies' },
+    { n: String(countryCount), l: 'countries' },
   ]
   const rows = [
-    ['currently', 'M10c · London'],
+    ['currently', `${experience[0].company} · ${experience[0].location}`],
     ['education', 'MSc CS · QMUL'],
-    ['building', 'wushi · Osho Zen'],
+    ['building', ownProducts.join(' · ')],
   ]
 
   return new ImageResponse(
@@ -63,7 +68,7 @@ export default async function OGImage() {
             </div>
 
             <div style={{ display: 'flex', fontFamily: MONO, fontSize: 26, color: '#4a4a4a', marginTop: 22 }}>
-              {'> I build '}<span style={{ color: '#0066ff', marginLeft: 12 }}>React &amp; Next.js apps</span>
+              {'> I build'}<span style={{ color: '#0066ff', marginLeft: 16 }}>React &amp; Next.js apps</span>
               <div style={{ width: 3, height: 30, backgroundColor: '#0066ff', marginLeft: 4 }} />
             </div>
 
