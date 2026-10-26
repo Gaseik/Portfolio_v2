@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { wushi } from '@/data/projects'
 import FeatureCard from './FeatureCard'
 
@@ -36,6 +36,17 @@ function ScheduleBoard() {
   const [status, setStatus] = useState<Status>(IDLE)
   const [shake, setShake] = useState<string | null>(null)
   const nextId = useRef(100)
+  const shakeTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
+
+  useEffect(() => () => clearTimeout(shakeTimer.current), [])
+
+  // clear first so a second blocked tap on the same cell replays the animation
+  const flash = (cell: string) => {
+    clearTimeout(shakeTimer.current)
+    setShake(null)
+    requestAnimationFrame(() => setShake(cell))
+    shakeTimer.current = setTimeout(() => setShake(null), 450)
+  }
 
   const slot = (day: number, time: number) => `${DAYS[day]} ${TIMES[time]}`
   const roomName = (r: Room) => (r === 'Remote' ? 'Remote' : `Room ${r}`)
@@ -45,8 +56,7 @@ function ScheduleBoard() {
     // remote sessions take no room, so they never clash
     const clash = room !== 'Remote' && here.find(s => s.room === room)
     if (clash || here.length >= MAX_PER_CELL) {
-      setShake(`${day}-${time}`)
-      setTimeout(() => setShake(null), 450)
+      flash(`${day}-${time}`)
       setStatus({
         kind: 'clash',
         text: clash
@@ -70,9 +80,9 @@ function ScheduleBoard() {
         <b>Scheduling</b><span>Zhongshan · 3–7 Nov</span>
       </div>
 
-      <div className="wu-rooms" role="radiogroup" aria-label="Room">
+      <div className="wu-rooms" role="group" aria-label="Room">
         {ROOMS.map(r => (
-          <button key={r} role="radio" aria-checked={room === r} className={`wu-room${room === r ? ' on' : ''}`} onClick={() => setRoom(r)}>
+          <button key={r} aria-pressed={room === r} className={`wu-room${room === r ? ' on' : ''}`} onClick={() => setRoom(r)}>
             {r}
           </button>
         ))}
@@ -92,7 +102,7 @@ function ScheduleBoard() {
                   {here.map(s => (
                     s.mine
                       ? <button key={s.id} className="wu-s mine" onClick={() => remove(s)} aria-label={`Cancel booking ${slot(di, ti)}`}>
-                          <b>{s.room}</b><small>new · tap to undo</small>
+                          <b>{s.room}</b><small>tap to undo</small>
                         </button>
                       : <span key={s.id} className={`wu-s${s.room === room ? ' hl' : ''}`}>
                           <b>{s.room}</b><small>{s.who.split(' ')[0]}</small>
@@ -118,7 +128,7 @@ export default function WushiCard() {
       slug="wushi"
       emphasis={['replacing a Google Form feeding a spreadsheet', 'clash-free room scheduling']}
       visual={<ScheduleBoard />}
-      visualClass="osho-vis wu-vis"
+      visualClass="wu-vis"
     />
   )
 }

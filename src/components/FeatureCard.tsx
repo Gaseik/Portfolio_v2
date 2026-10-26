@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 
 interface Feature {
   title: string
@@ -12,6 +12,17 @@ interface Feature {
   metrics: { n: string; l: string }[]
 }
 
+/** Splits `text` around each phrase so the phrases can be set in bold without raw HTML. */
+function emphasise(text: string, phrases: string[]): ReactNode[] {
+  if (process.env.NODE_ENV !== 'production') {
+    for (const p of phrases) if (!text.includes(p)) console.warn(`FeatureCard: emphasis phrase not found: "${p}"`)
+  }
+  const found = phrases.filter(p => text.includes(p))
+  if (!found.length) return [text]
+  const re = new RegExp(`(${found.map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`)
+  return text.split(re).map((part, i) => (found.includes(part) ? <strong key={i}>{part}</strong> : <Fragment key={i}>{part}</Fragment>))
+}
+
 /** The large two-column project card: write-up on the left, an interactive `visual` on the right. */
 export default function FeatureCard({ project, slug, emphasis, visual, visualClass }: {
   project: Feature
@@ -19,21 +30,20 @@ export default function FeatureCard({ project, slug, emphasis, visual, visualCla
   /** phrases in the description to set in bold */
   emphasis: string[]
   visual: ReactNode
+  /** extra class for the visual panel, for its background */
   visualClass: string
 }) {
-  const desc = emphasis.reduce((d, phrase) => d.replace(phrase, `<strong>${phrase}</strong>`), project.description)
-
   return (
-    <div className="osho">
-      <div className="osho-body">
+    <div className="feature">
+      <div className="feature-body">
         <div className="file-tab">
           <span className="dot" />
           {slug}<span className="live"> · live</span>
         </div>
 
-        <h3 className="osho-title">{project.title}</h3>
-        <div className="osho-sub">{project.subtitle} · {project.meta}</div>
-        <p className="osho-desc" dangerouslySetInnerHTML={{ __html: desc }} />
+        <h3 className="feature-title">{project.title}</h3>
+        <div className="feature-sub">{project.subtitle} · {project.meta}</div>
+        <p className="feature-desc">{emphasise(project.description, emphasis)}</p>
 
         <div className="mini-lbl">architectural decisions</div>
         <div className="decisions">
@@ -55,9 +65,9 @@ export default function FeatureCard({ project, slug, emphasis, visual, visualCla
         </div>
       </div>
 
-      <div className={visualClass}>{visual}</div>
+      <div className={`feature-vis ${visualClass}`}>{visual}</div>
 
-      <div className="osho-metrics">
+      <div className="feature-metrics">
         {project.metrics.map(({ n, l }) => (
           <div key={l} className="metric">
             <b>{n}</b>
