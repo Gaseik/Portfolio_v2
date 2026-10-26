@@ -1,4 +1,5 @@
 import OshoCard from './OshoCard'
+import WushiCard from './WushiCard'
 import ProjectCard from './ProjectCard'
 import { projects } from '@/data/projects'
 
@@ -15,14 +16,13 @@ export default function Projects() {
         </p>
       </div>
 
+      <div className="reveal-s"><WushiCard /></div>
       <div className="reveal-s"><OshoCard /></div>
 
       <div className="proj-grid">
-        {projects.map((p, i) => {
-          // stagger by grid column; full-width cards take a whole row
-          const col = p.wide ? 0 : projects.slice(0, i).filter(q => !q.wide).length % 2
-          return <ProjectCard key={p.title} {...p} delay={`${col * 0.1}s`} />
-        })}
+        {projects.map((p, i) => (
+          <ProjectCard key={p.title} {...p} delay={`${(i % 2) * 0.1}s`} />
+        ))}
       </div>
     </section>
   )

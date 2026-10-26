@@ -5,13 +5,14 @@ import DotField from './DotField'
 import { useCountUp, useMagnetic, useTilt, useYoe, prefersReducedMotion } from '@/lib/hooks'
 import { EMAIL, GITHUB, LINKEDIN } from '@/data/links'
 import { companyCount, countryCount } from '@/data/experience'
+import { wushi } from '@/data/projects'
 
 const ROLES = ['React & Next.js apps', 'iOS & Android apps', '3D / AR experiences', 'AI-automated dev workflows', 'pixel-perfect UIs']
 
 const DATA_ROWS = [
   { key: 'currently',    val: 'M10c · London',      cls: 'accent', href: 'https://www.m10c.com/' },
   { key: 'education',    val: 'MSc CS · QMUL',      cls: 'accent', href: 'https://www.qmul.ac.uk/' },
-  { key: 'side project', val: 'Osho Zen Insight ↗', cls: 'green',  href: 'https://osho-tarot.vercel.app/' },
+  { key: 'side project', val: `${wushi.title} ↗`,  cls: 'green',  href: wushi.url },
   { key: 'available',    val: 'immediately',        cls: 'green' },
 ]
 

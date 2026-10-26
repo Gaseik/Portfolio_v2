@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { yearsOfExperience } from '@/data/links'
 import { companyCount, countryCount, experience } from '@/data/experience'
-import { osho, projects } from '@/data/projects'
+import { wushi } from '@/data/projects'
 
 export const alt = 'James Cheng — Frontend Engineer'
 export const size = { width: 1200, height: 630 }
@@ -18,7 +18,6 @@ const SANS = 'IBM Plex Sans'
 export default async function OGImage() {
   const font = (file: string) => readFileSync(join(process.cwd(), 'src/assets/fonts', file))
   const yoe = yearsOfExperience()
-  const ownProducts = [...projects.flatMap(p => ('short' in p ? [p.short] : [])), osho.short]
 
   const stats = [
     { n: `${yoe}+`, l: 'years' },
@@ -28,7 +27,7 @@ export default async function OGImage() {
   const rows = [
     ['currently', `${experience[0].company} · ${experience[0].location}`],
     ['education', 'MSc CS · QMUL'],
-    ['building', ownProducts.join(' · ')],
+    ['side project', wushi.short],
   ]
 
   return new ImageResponse(
