@@ -38,10 +38,10 @@ export const wushi = {
   tags: ['React', 'TypeScript', 'Hono', 'Drizzle', 'Neon Postgres', 'Vite', 'Vercel'],
   highlightTags: ['React', 'TypeScript', 'Hono'],
   metrics: [
-    { n: '3 roles',    l: 'Owner · admin · therapist' },
-    { n: 'zh-TW / EN', l: 'Bilingual landing' },
-    { n: '0',          l: 'Double bookings allowed' },
-    { n: 'Multi',      l: 'Tenant from day one' },
+    { n: '3',         l: 'Live customers' },
+    { n: '100+',      l: 'Active users' },
+    { n: 'Encrypted', l: 'In transit & at rest' },
+    { n: '0',         l: 'Double bookings allowed' },
   ],
 }
 

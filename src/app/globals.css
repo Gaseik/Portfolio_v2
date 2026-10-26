@@ -414,7 +414,7 @@ a.dt-val:hover { padding-left: 6px; }
   background: radial-gradient(circle at 30% 20%, #ffffff 0%, #eef4f1 55%, #dfeae5 100%);
   padding: 28px 22px;
 }
-.wu-board { position: relative; z-index: 2; width: 100%; max-width: 360px; background: #fff; border: 1px solid #d6e3dd; border-radius: 16px; box-shadow: 0 24px 50px -28px rgba(31,61,53,.45); overflow: hidden; font-family: var(--sans); color: var(--wu-ink); }
+.wu-board { position: relative; z-index: 2; width: 100%; background: #fff; border: 1px solid #d6e3dd; border-radius: 16px; box-shadow: 0 24px 50px -28px rgba(31,61,53,.45); overflow: hidden; font-family: var(--sans); color: var(--wu-ink); }
 .wu-head { display: flex; align-items: baseline; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #e6eeea; font-size: .78rem; }
 .wu-head span { font-size: .68rem; color: #6b7f78; }
 .wu-rooms { display: flex; align-items: center; gap: 5px; padding: 10px 14px; border-bottom: 1px solid #e6eeea; }
