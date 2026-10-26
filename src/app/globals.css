@@ -407,14 +407,43 @@ a.dt-val:hover { padding-left: 6px; }
 .metric b { display: block; font-family: var(--mono); font-size: 1.2rem; font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 4px; }
 .metric small { font-family: var(--mono); font-size: .58rem; letter-spacing: .06em; color: var(--dim); text-transform: uppercase; }
 
-.proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-.proj-wide { grid-column: 1 / -1; }
-.proj-wide .proj-title { font-size: clamp(1.4rem, 2.4vw, 2rem); }
-@media (min-width: 1081px) {
-  .proj-wide .proj-card { display: grid; grid-template-columns: 1.45fr 1fr; gap: 8px 28px; align-items: center; padding-right: 28px; padding-bottom: 14px; }
-  .proj-wide .proj-shot { margin-bottom: 0; }
-  .proj-wide .proj-body { padding: 8px 0; }
+
+/* wushi scheduling board */
+.wu-vis {
+  --wu: #3f7a6b; --wu-soft: #e7f0ec; --wu-ink: #1f3d35; --wu-bad: #dc2626;
+  background: radial-gradient(circle at 30% 20%, #ffffff 0%, #eef4f1 55%, #dfeae5 100%);
+  padding: 28px 22px;
 }
+.wu-board { position: relative; z-index: 2; width: 100%; max-width: 360px; background: #fff; border: 1px solid #d6e3dd; border-radius: 16px; box-shadow: 0 24px 50px -28px rgba(31,61,53,.45); overflow: hidden; font-family: var(--sans); color: var(--wu-ink); }
+.wu-head { display: flex; align-items: baseline; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #e6eeea; font-size: .78rem; }
+.wu-head span { font-size: .68rem; color: #6b7f78; }
+.wu-rooms { display: flex; align-items: center; gap: 5px; padding: 10px 14px; border-bottom: 1px solid #e6eeea; }
+.wu-room { font: inherit; font-size: .68rem; padding: 4px 9px; border-radius: 7px; border: 1px solid #d6e3dd; background: #fff; color: var(--wu-ink); transition: background .2s, color .2s, transform .2s var(--ease-spring); }
+.wu-room:hover { transform: translateY(-2px); }
+.wu-room.on { background: var(--wu); border-color: var(--wu); color: #fff; }
+.wu-reset { margin-left: auto; font: inherit; font-size: .64rem; color: var(--wu); background: none; border: 0; text-decoration: underline; text-underline-offset: 2px; }
+.wu-grid { display: grid; grid-template-columns: 38px repeat(5, minmax(0, 1fr)); }
+.wu-row { display: contents; }
+.wu-day { font-size: .62rem; color: #6b7f78; padding: 7px 4px 5px; border-bottom: 1px solid #e6eeea; }
+.wu-time { font-family: var(--mono); font-size: .56rem; color: #8a9a94; padding: 7px 0 0 6px; border-bottom: 1px solid #eef3f0; }
+.wu-cell { position: relative; min-height: 64px; padding: 4px 3px 18px; display: flex; flex-direction: column; gap: 3px; border-left: 1px solid #eef3f0; border-bottom: 1px solid #eef3f0; }
+.wu-cell.shake { animation: wuShake .45s; background: rgba(220,38,38,.07); }
+@keyframes wuShake { 20%,60% { transform: translateX(-3px) } 40%,80% { transform: translateX(3px) } }
+.wu-s { display: flex; flex-direction: column; text-align: left; padding: 3px 4px; border-radius: 5px; border-left: 2px solid var(--wu); background: var(--wu-soft); font: inherit; color: var(--wu-ink); animation: wuIn .4s var(--ease-spring); transition: box-shadow .2s, background .2s; }
+.wu-s b { font-size: .6rem; font-weight: 600; line-height: 1.2; }
+.wu-s small { font-size: .52rem; color: #5d726b; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wu-s.hl { background: #d3e5dd; box-shadow: inset 0 0 0 1px rgba(63,122,107,.45); }
+.wu-s.mine { border: 0; border-left: 2px solid #0066ff; background: #e6efff; }
+.wu-s.mine small { color: #0052cc; }
+@keyframes wuIn { from { opacity: 0; transform: scale(.7) } to { opacity: 1; transform: none } }
+.wu-add { position: absolute; left: 3px; right: 3px; bottom: 3px; height: 13px; font: inherit; font-size: .62rem; line-height: 1; color: transparent; background: transparent; border: 1px dashed transparent; border-radius: 4px; transition: color .2s, border-color .2s, background .2s; }
+.wu-cell:hover .wu-add, .wu-add:focus-visible { color: var(--wu); border-color: rgba(63,122,107,.4); background: rgba(63,122,107,.05); }
+.wu-status { padding: 10px 14px; font-size: .66rem; color: #6b7f78; border-top: 1px solid #e6eeea; min-height: 3.2em; transition: color .2s, background .2s; }
+.wu-status.ok { color: var(--wu); background: #f3f8f6; }
+.wu-status.clash { color: var(--wu-bad); background: #fef2f2; }
+@media (hover: none) { .wu-add { color: rgba(63,122,107,.5); border-color: rgba(63,122,107,.2); } }
+
+.proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .proj-card {
   position: relative; border-radius: 22px; padding: 14px 14px 24px; background: #fff;
   border: 1px solid var(--line); transform-style: preserve-3d;

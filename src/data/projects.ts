@@ -1,6 +1,5 @@
 export const osho = {
   title: 'Osho Zen Insight',
-  short: 'Osho Zen',
   url: 'https://osho-tarot.vercel.app',
   subtitle: 'AI Tarot Platform · Solo Project · 2024–Present',
   meta: 'Next.js 16 / Groq / TypeScript',
@@ -22,22 +21,33 @@ export const osho = {
   ],
 }
 
+export const wushi = {
+  title: 'wushi 晤室',
+  short: 'wushi',
+  url: 'https://wushi-phi.vercel.app/',
+  subtitle: 'Clinic Booking SaaS · Own Product · 2026',
+  meta: 'React / Hono / Drizzle / Neon',
+  description:
+    'Booking and back office for psychotherapy clinics, replacing a Google Form feeding a spreadsheet. Intake, therapist matching, clash-free room scheduling and billing records live in one multi-tenant platform, with a bilingual landing page for clinics.',
+  decisions: [
+    { key: 'Sessions are real rows', value: 'Materialised sessions make the double-booking check a single query' },
+    { key: 'Permissions as functions', value: 'Pure, tested functions instead of Postgres RLS, checked on client and server' },
+    { key: 'Tenant on every table', value: 'organization_id from day one; multi-tenancy is not something you bolt on later' },
+    { key: 'Sensitive data stays closed', value: 'The presenting concern is never selected in list views, only opened per record' },
+  ],
+  tags: ['React', 'TypeScript', 'Hono', 'Drizzle', 'Neon Postgres', 'Vite', 'Vercel'],
+  highlightTags: ['React', 'TypeScript', 'Hono'],
+  metrics: [
+    { n: '3 roles',    l: 'Owner · admin · therapist' },
+    { n: 'zh-TW / EN', l: 'Bilingual landing' },
+    { n: '0',          l: 'Double bookings allowed' },
+    { n: 'Multi',      l: 'Tenant from day one' },
+  ],
+}
+
 export const projects = [
   {
     num: '01',
-    cat: 'B2B SaaS · Own product · 2026',
-    title: 'wushi 晤室',
-    short: 'wushi',
-    impact: 'Booking and back office for psychotherapy clinics, replacing a Google Form feeding a spreadsheet. Intake, therapist matching, clash-free room scheduling, billing records and role-based permissions in one multi-tenant platform, with a bilingual landing page.',
-    tags: ['React', 'TypeScript', 'Hono', 'Drizzle', 'Neon Postgres', 'Vite'],
-    image: '/img/WushiMockup.png',
-    tint: '#f5f4f0',
-    url: 'https://wushi-phi.vercel.app/',
-    urlLabel: 'wushi-phi.vercel.app ↗',
-    wide: true,
-  },
-  {
-    num: '02',
     cat: 'Enterprise · Hannlync Co.',
     title: 'B2B Product Platform',
     impact: 'Rebuilt product pages for 4 service lines (NaaS/MaaS/SaaS/RaaS). +15% user engagement after redesign.',
@@ -46,7 +56,7 @@ export const projects = [
     tint: '#e8f0ff',
   },
   {
-    num: '03',
+    num: '02',
     cat: 'Enterprise SPA · Mulder Tech',
     title: 'Consultant Panel',
     impact: 'Regulatory compliance platform for medical device lifecycle tracking — dashboard, document control, AI regulatory intelligence, and 13+ role-based access across multi-tenant architecture.',
@@ -55,7 +65,7 @@ export const projects = [
     tint: '#eef7f1',
   },
   {
-    num: '04',
+    num: '03',
     cat: 'AR / 3D · Spe3d Co.',
     title: 'AR Experience Platform',
     impact: 'Marker-based AR that overlays 3D objects onto real-world scenes via the phone camera. GLTF/GLB assets with custom lighting: +20% interaction, −30% initial load via progressive asset loading.',
@@ -64,7 +74,7 @@ export const projects = [
     tint: '#f3edff',
   },
   {
-    num: '05',
+    num: '04',
     cat: 'Freelance · Mlytics',
     title: 'Official Website Reconstruction',
     impact: 'Migrated corporate site from WordPress to Gatsby.js + React — SEO optimisation, i18n, RWD, and marketing-aligned animations.',
