@@ -22,8 +22,10 @@ export const experience = [
     period: 'Oct 2024 — Oct 2025',
     note: 'Medical device traceability — React + Hyperledger Fabric. AWS deployment, CI/CD pipelines.',
     details: [
-      'Developed a medical device traceability platform using React and Hyperledger Fabric, tracking usage, inventory and disposal of medical supplies',
+      'Developed a medical device traceability platform using React and blockchain technology (Hyperledger Fabric)',
+      'Implemented features for tracking usage, inventory, and disposal of medical supplies, streamlining processes for clients',
       'Managed AWS deployment and CI/CD pipelines for reliable full-stack delivery',
+      'Collaborated with backend developers to design and integrate APIs, ensuring seamless data flow and system efficiency',
     ],
   },
   {
