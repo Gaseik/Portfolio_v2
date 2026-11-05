@@ -3,6 +3,8 @@ import { Fragment, type ReactNode } from 'react'
 interface Feature {
   title: string
   url: string
+  /** an extra outbound link shown beside View Live */
+  secondaryLink?: { label: string; url: string }
   subtitle: string
   meta: string
   description: string
@@ -61,7 +63,12 @@ export default function FeatureCard({ project, slug, emphasis, visual, visualCla
               <span key={t} className={`otag${project.highlightTags.includes(t) ? ' hi' : ''}`}>{t}</span>
             ))}
           </div>
-          <a href={project.url} target="_blank" rel="noopener" className="btn p">View Live <span className="arr">↗</span></a>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            {project.secondaryLink && (
+              <a href={project.secondaryLink.url} target="_blank" rel="noopener" className="btn">{project.secondaryLink.label} <span className="arr">↗</span></a>
+            )}
+            <a href={project.url} target="_blank" rel="noopener" className="btn p">View Live <span className="arr">↗</span></a>
+          </div>
         </div>
       </div>
 

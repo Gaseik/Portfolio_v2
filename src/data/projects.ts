@@ -25,6 +25,7 @@ export const wushi = {
   title: 'wushi 晤室',
   short: 'wushi',
   url: 'https://wushi-phi.vercel.app/',
+  secondaryLink: { label: 'Clinic site', url: 'https://www.mushinclinic.com/' },
   subtitle: 'Multi-tenant Clinic Booking SaaS · Solo Project · 2026',
   meta: 'React / Hono / Drizzle / Neon Postgres',
   description:
@@ -39,7 +40,7 @@ export const wushi = {
   highlightTags: ['React', 'TypeScript', 'Hono'],
   metrics: [
     { n: '~5,000',    l: 'Projected users' },
-    { n: '59',        l: 'Vitest unit tests' },
+    { n: '100%',      l: 'Solo — brief to UI' },
     { n: 'Encrypted', l: 'Sensitive client data' },
     { n: '0',         l: 'Client-specific code' },
   ],
