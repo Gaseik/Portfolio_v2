@@ -1,16 +1,18 @@
 export const experience = [
   {
-    role: 'Frontend Developer',
+    role: 'Frontend Engineer',
     company: 'M10c',
     url: 'https://www.m10c.com/',
     location: 'London',
     period: 'Oct 2025 — Now',
-    note: 'Web & cross-platform mobile apps for 4 client projects with React, Next.js and React Native. Automating the team workflow with AI agents (Claude Code & Cursor).',
+    note: 'Product agency shipping web & mobile apps at scale — React, Next.js, React Native. Maestro E2E suite (−24% run time), Sentry root-causing, and an MCP server linking AI agents to engineering work logs.',
     details: [
-      'Build and maintain web and cross-platform mobile apps for 4 client projects using React, Next.js and React Native',
-      "Broke down the team's development workflow into repeatable steps and automated them with AI agents — codified 100+ code review comments into modular Claude Code and Cursor rules (core, React patterns, styles, shared components) and set up automated AI code review",
-      'Defined component architecture guidelines for when to mirror Figma structure versus abstract independently, keeping the shared component library consistent across projects',
-      'Wrote unit tests with Jest and Maestro E2E tests for key mobile user flows',
+      'Product agency building web and mobile apps at scale, including a leading menopause health app (1M+ downloads, Apple Editors\' Choice), a UK competitions platform (£50M+ in app revenue) and a hospitality staffing platform (used by Hilton and IHG)',
+      'Built a Maestro end-to-end test suite for a React Native app, with per-run seeded test data and cached EAS builds, then cut test flow time by 24% (2,519s → 1,907s) by profiling and removing fixed waits',
+      'Managed app version iterations, including Expo SDK upgrades, and designed backward-compatible interfaces between frontend and backend so users on older app versions keep a working experience',
+      "Root-caused production Sentry errors across web and mobile, including double-submit race conditions colliding with a payment provider's locks and a GTM consent-ordering bug that let tracking fire on the denied path",
+      'Shipped continuous feature iterations across web, mobile and admin platforms, including a referral programme with A/B-tested rewards, automated postal-entry review, community moderation and live-stream Q&A',
+      'Co-built an internal management platform with an MCP server that connects AI agents to engineering work logs, producing auditable records used as evidence for client billable hours',
     ],
   },
   {
@@ -31,13 +33,12 @@ export const experience = [
     company: 'Spe3d Co.',
     location: 'Taipei',
     period: 'Mar 2023 — Aug 2024',
-    note: "Taiwan's top AR startup. Marker-based AR with Three.js + TypeScript. +20% interaction, −30% load time.",
+    note: "Leading Taiwanese AR startup. Marker-based AR with Three.js + TypeScript. +20% interaction, −30% load time.",
     details: [
-      "Led frontend development for Taiwan's top AR startup, building marker-based AR experiences with TypeScript and Three.js that overlay 3D objects onto real-world scenes via mobile camera",
-      'Integrated GLTF/GLB 3D assets with custom lighting setups (directional and ambient) and camera controls, boosting user interaction by 20%',
-      'Optimised mobile performance by implementing progressive asset loading, cutting initial load times by 30%',
-      'Built a local Three.js preview environment to validate 3D assets early, catching material and lighting discrepancies between Blender exports and in-browser rendering before handoff',
-      'Collaborated closely with 3D designers to iterate on visual fidelity and ensure creative intent translated accurately into production',
+      'Led frontend development for a leading Taiwanese AR startup, building marker-based AR experiences with TypeScript and Three.js',
+      'Integrated GLTF/GLB assets with custom lighting and camera controls, increasing user interaction by 20%',
+      'Implemented progressive asset loading, cutting initial mobile load times by 30%',
+      'Built a Three.js preview environment to catch material and lighting issues between Blender exports and browser rendering before handoff',
     ],
   },
   {
@@ -45,11 +46,10 @@ export const experience = [
     company: 'Hannlync Co.',
     location: 'Taipei',
     period: '2020 — 2023',
-    note: 'Mobile-first B2B products, live-streaming for corporate events, real-time tracking app for UMC.',
+    note: 'Mobile-first B2B products, real-time tracking app for UMC.',
     details: [
-      'Collaborated closely with the UX/UI team to implement mobile-first responsive designs, improving user engagement by 15%',
-      'Led the development of a personnel tracking app for UMC during the pandemic, integrating real-time data processing for efficient tracking of entry/exit activities',
-      'Developed a live-streaming platform for corporate events, utilising multi-national servers to ensure high-quality, stable connections for shareholder and internal meetings',
+      'Implemented mobile-first responsive designs with the UX/UI team, improving user engagement by 15%',
+      'Led development of a personnel tracking app for UMC during the pandemic, processing real-time entry and exit data',
     ],
   },
 ]

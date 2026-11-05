@@ -25,23 +25,24 @@ export const wushi = {
   title: 'wushi 晤室',
   short: 'wushi',
   url: 'https://wushi-phi.vercel.app/',
-  subtitle: 'Clinic Booking SaaS · Own Product · 2026',
-  meta: 'React / Hono / Drizzle / Neon',
+  secondaryLink: { label: 'Clinic site', url: 'https://www.mushinclinic.com/' },
+  subtitle: 'Multi-tenant Clinic Booking SaaS · Solo Project · 2026',
+  meta: 'React / Hono / Drizzle / Neon Postgres',
   description:
-    'Booking and back office for psychotherapy clinics, replacing a Google Form feeding a spreadsheet. Intake, therapist matching, clash-free room scheduling and billing records live in one multi-tenant platform, with a bilingual landing page for clinics.',
+    "Designed and built solo, from a clinic owner's business needs to product requirements, multi-tenant architecture and final UI. Online booking, admin dashboard, payments, email notifications, i18n and handwritten e-signatures for clinical records, plus the product's marketing website. In pilot testing with its first clinic in Taiwan.",
   decisions: [
     { key: 'Sessions are real rows', value: 'Materialised sessions make the double-booking check a single query' },
     { key: 'Permissions as functions', value: 'Pure, tested functions instead of Postgres RLS, checked on client and server' },
-    { key: 'Tenant on every table', value: 'organization_id from day one; multi-tenancy is not something you bolt on later' },
+    { key: 'Tenant on every table', value: 'Monorepo with shared, API and web packages; new clinics onboard with no client-specific code' },
     { key: 'Sensitive data stays closed', value: 'The presenting concern is never selected in list views, only opened per record' },
   ],
   tags: ['React', 'TypeScript', 'Hono', 'Drizzle', 'Neon Postgres', 'Vite', 'Vercel'],
   highlightTags: ['React', 'TypeScript', 'Hono'],
   metrics: [
-    { n: '3',         l: 'Live customers' },
-    { n: '100+',      l: 'Active users' },
-    { n: 'Encrypted', l: 'In transit & at rest' },
-    { n: '0',         l: 'Double bookings allowed' },
+    { n: '~5,000',    l: 'Projected users' },
+    { n: '100%',      l: 'Solo — brief to UI' },
+    { n: 'Encrypted', l: 'Sensitive client data' },
+    { n: '0',         l: 'Client-specific code' },
   ],
 }
 
