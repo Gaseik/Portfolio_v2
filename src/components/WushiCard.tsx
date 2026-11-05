@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { wushi } from '@/data/projects'
 import FeatureCard from './FeatureCard'
+import ClinicPreview from './ClinicPreview'
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 const TIMES = ['14:00', '15:00', '19:00']
@@ -121,13 +122,29 @@ function ScheduleBoard() {
   )
 }
 
+type Tab = 'site' | 'board'
+
+/** Right-hand panel: the clinic's public site first, the back-office scheduling board second. */
+function WushiVisual() {
+  const [tab, setTab] = useState<Tab>('site')
+  return (
+    <>
+      <div className="wu-tabs" role="tablist" aria-label="Wushi preview">
+        <button role="tab" className="wu-tab" aria-selected={tab === 'site'} onClick={() => setTab('site')}>Clinic site</button>
+        <button role="tab" className="wu-tab" aria-selected={tab === 'board'} onClick={() => setTab('board')}>Scheduling</button>
+      </div>
+      {tab === 'site' ? <ClinicPreview /> : <ScheduleBoard />}
+    </>
+  )
+}
+
 export default function WushiCard() {
   return (
     <FeatureCard
       project={wushi}
       slug="wushi"
-      emphasis={['replacing a Google Form feeding a spreadsheet', 'clash-free room scheduling']}
-      visual={<ScheduleBoard />}
+      emphasis={["Designed and built solo", 'handwritten e-signatures']}
+      visual={<WushiVisual />}
       visualClass="wu-vis"
     />
   )
