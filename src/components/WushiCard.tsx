@@ -124,16 +124,16 @@ function ScheduleBoard() {
 
 type Tab = 'site' | 'board'
 
-/** Right-hand panel: the clinic's public site first, the back-office scheduling board second. */
+/** Right-hand panel: the back-office scheduling board first, the clinic's public site second. */
 function WushiVisual() {
-  const [tab, setTab] = useState<Tab>('site')
+  const [tab, setTab] = useState<Tab>('board')
   return (
     <>
       <div className="wu-tabs" role="tablist" aria-label="Wushi preview">
-        <button role="tab" className="wu-tab" aria-selected={tab === 'site'} onClick={() => setTab('site')}>Clinic site</button>
         <button role="tab" className="wu-tab" aria-selected={tab === 'board'} onClick={() => setTab('board')}>Scheduling</button>
+        <button role="tab" className="wu-tab" aria-selected={tab === 'site'} onClick={() => setTab('site')}>Clinic site</button>
       </div>
-      {tab === 'site' ? <ClinicPreview /> : <ScheduleBoard />}
+      {tab === 'board' ? <ScheduleBoard /> : <ClinicPreview />}
     </>
   )
 }
