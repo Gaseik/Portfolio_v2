@@ -10,6 +10,7 @@ export const GITHUB = 'https://github.com/Gaseik'
 export const LINKEDIN = 'https://www.linkedin.com/in/weichieh-cheng-fe'
 
 export const STACK = [
-  'React', 'Next.js', 'TypeScript', 'React Native', 'Three.js', 'Claude Code',
-  'Tailwind', 'Redux', 'Jest / Maestro', 'Python', 'MySQL', 'AWS', 'Docker', 'Figma',
+  'React', 'Next.js', 'TypeScript', 'React Native', 'Expo / EAS', 'Three.js', 'Claude Code', 'MCP',
+  'Tailwind', 'Redux', 'Node.js', 'Hono', 'PostgreSQL', 'Drizzle', 'Jest / Vitest / Maestro',
+  'AWS', 'Docker', 'Sentry', 'GTM', 'Figma',
 ]
