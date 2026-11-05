@@ -297,13 +297,17 @@ a.dt-val:hover { padding-left: 6px; }
   transition: border-color .3s, box-shadow .4s, transform .4s var(--ease-out);
 }
 .exp-item:hover, .exp-item.open { border-color: rgba(0,102,255,.35); box-shadow: 0 18px 50px -24px rgba(0,60,180,.28); }
-.exp-item:hover { transform: translateX(6px); }
+.exp-item { --shift: 6px; }
+.exp-item:hover { transform: translateX(var(--shift)); }
 .exp-node {
   position: absolute; left: -36px; top: 30px; width: 16px; height: 16px; border-radius: 50%;
   background: var(--bg); border: 2px solid var(--line);
-  transition: border-color .3s, background .3s, transform .4s var(--ease-spring);
+  /* same curve and duration as the card, so the counter-shift below cancels its slide exactly */
+  transition: border-color .3s, background .3s, transform .4s var(--ease-out);
 }
 .exp-item.open .exp-node, .exp-item:hover .exp-node { border-color: var(--accent); background: var(--accent); transform: scale(1.25); box-shadow: 0 0 0 5px rgba(0,102,255,.15); }
+/* the card slides right on hover; keep the dot on the timeline line */
+.exp-item:hover .exp-node { transform: translateX(calc(var(--shift) * -1)) scale(1.25); }
 .exp-item.now .exp-node::after { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--accent); animation: ripple 2s ease-out infinite; }
 @keyframes ripple { from { transform: scale(.6); opacity: 1 } to { transform: scale(1.8); opacity: 0 } }
 .exp-btn { all: unset; display: grid; grid-template-columns: 1fr auto; gap: 16px; width: 100%; padding: 24px 28px; box-sizing: border-box; cursor: none; }
@@ -604,7 +608,7 @@ a.dt-val:hover { padding-left: 6px; }
   .exp-side { justify-content: space-between; }
   .exp-note { padding: 0 18px 18px; margin-top: -4px; font-size: .86rem; }
   .exp-details ul { margin: 0 18px 20px; }
-  .exp-item:hover { transform: none; }
+  .exp-item { --shift: 0px; }
   .edu-grid { grid-template-columns: 1fr; }
   .feature-body { padding: 26px 18px; }
   .decisions { grid-template-columns: 1fr; }
@@ -625,7 +629,7 @@ a.dt-val:hover { padding-left: 6px; }
   .cur, .cur-r { display: none; }
   body { cursor: auto; }
   a, button, .exp-btn, .email-big { cursor: pointer; }
-  .exp-item:hover { transform: none; }
+  .exp-item { --shift: 0px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
